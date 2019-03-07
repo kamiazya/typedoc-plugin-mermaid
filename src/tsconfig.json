@@ -6,6 +6,8 @@
     "rootDir": "./",
     "noUnusedLocals": true,
     "noImplicitAny": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "declaration": true,
+    "removeComments": true
   }
 }

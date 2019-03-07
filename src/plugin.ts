@@ -9,8 +9,8 @@ import { PageEvent } from 'typedoc/dist/lib/output/events';
 @Component({ name: 'mermaid' })
 export class MermaidPlugin extends ConverterComponent {
 
-  static metaMatcher = /<\/body>/;
-  static script = `
+  private static metaMatcher = /<\/body>/;
+  private static script = `
     <script
       src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"
     ></script>

@@ -4,6 +4,28 @@
 
 A plugin for TypeDoc that generates graphs for mermaid.js diagrams by "mermaid" annotation.
 
+## Usage
+
+Write tsdoc with `@mermaid` annotation.
+
+```typescript
+/**
+ * Hoge is sample class for example of `typedoc-plugin-mermaid`.
+ *
+ * @mermaid
+ * graph TB
+ *   mermaid.js --> TypeDoc;
+ */
+export class Hoge {
+}
+
+```
+
+↓↓↓
+
+![Example](./img/example.png)
+
+
 ## Installation
 
 The plugin can then be installed using [npm](https://www.npmjs.com/):

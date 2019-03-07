@@ -1,0 +1,26 @@
+{
+  "name": "typedoc-plugin-mermaid-example-package",
+  "version": "1.0.0",
+  "description": "Example for using typedoc-plugin-mermaid.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kamiazya/typedoc-plugin-mermaid.git"
+  },
+  "author": "kamiazya <yuki@kamiazya.tech>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "doc": "typedoc",
+    "serve": "live-server ../docs"
+  },
+  "files": [
+    "dist/"
+  ],
+  "devDependencies": {
+    "live-server": "^1.2.1",
+    "typedoc": "^0.14.2",
+    "typedoc-plugin-mermaid": "^0.9.2",
+    "typescript": "^3.3.3333"
+  }
+}

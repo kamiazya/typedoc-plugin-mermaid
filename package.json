@@ -6,7 +6,10 @@
   "author": "kamiazya <yuki@kamiazya.tech>",
   "license": "MIT",
   "private": false,
-  "dependencies": {
+  "peerDependencies": {
+    "typedoc": "^0.14.2"
+  },
+  "devDependencies": {
     "typescript": "^3.3.3333"
   }
 }

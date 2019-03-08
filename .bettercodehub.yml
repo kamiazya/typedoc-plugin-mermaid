@@ -3,6 +3,6 @@ languages:
   - typescript
   - javascript
 exclude:
-  - docs/**
-  - test/**
-  - example/**
+  - docs/.*
+  - test/.*
+  - example/.*

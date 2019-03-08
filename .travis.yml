@@ -17,6 +17,7 @@ before_install:
 script:
   - yarn lint
   - yarn build
+  - yarn test --coverage
 
 dist: trusty
 cache:

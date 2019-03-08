@@ -11,6 +11,31 @@ import { PageEvent } from 'typedoc/dist/lib/output/events';
 export class MermaidPlugin extends ConverterComponent {
 
   /**
+   * The first line of text wraps h4.
+   * The other wraps by div classed mermaid.
+   */
+  public static convertCommentTagText(tagText: string): string {
+    const texts = tagText.split('\n');
+    // take first line
+    const title = texts.shift();
+    // the other
+    const mermaid = texts.join('\n');
+    return `#### ${title} \n\n <div class="mermaid">${mermaid}</div>`;
+  }
+
+  /**
+   * Insert custom script before closing body tag.
+   */
+  public static convertPageContents(contents: string): string {
+    if (this.BODY_CLOSINNG_TAG.test(contents)) {
+      return contents.replace(
+        this.BODY_CLOSINNG_TAG,
+        this.CUSTOM_SCRIPTS_AND_BODY_CLOSINNG_TAG);
+    }
+    return contents;
+  }
+
+  /**
    * Regex literal that matches body closing tag.
    */
   private static BODY_CLOSINNG_TAG = /<\/body>/;
@@ -51,31 +76,6 @@ export class MermaidPlugin extends ConverterComponent {
    */
   private static isMermaidCommentTag(tag: CommentTag): boolean {
     return tag.tagName === 'mermaid';
-  }
-
-  /**
-   * The first line of text wraps h4.
-   * The other wraps by div classed mermaid.
-   */
-  private static convertCommentTag(tag: CommentTag): void {
-    const texts = tag.text.split('\n');
-    // take first line
-    const title = texts.shift();
-    // the other
-    const mermaid = texts.join('\n');
-    tag.text = `#### ${title} \n\n <div class="mermaid">${mermaid}</div>`;
-  }
-
-  /**
-   * Insert custom script before closing body tag.
-   */
-  private static convertPageContents(contents: string): string {
-    if (this.BODY_CLOSINNG_TAG.test(contents)) {
-      return contents.replace(
-        this.BODY_CLOSINNG_TAG,
-        this.CUSTOM_SCRIPTS_AND_BODY_CLOSINNG_TAG);
-    }
-    return contents;
   }
 
   /**
@@ -124,7 +124,10 @@ export class MermaidPlugin extends ConverterComponent {
   private onBegin(context: Context) {
     MermaidPlugin
       .mermaidTags(context)
-      .forEach(MermaidPlugin.convertCommentTag);
+      .forEach((tag) => {
+        // convert
+        tag.text = MermaidPlugin.convertCommentTagText(tag.text);
+      });
   }
 
   /**

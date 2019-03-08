@@ -26,14 +26,24 @@
   "scripts": {
     "lint": "tslint --project ./src/tsconfig.json",
     "build": "rm -rf dist && tsc -p ./src/tsconfig.json",
-    "prepare": "yarn lint && yarn build"
+    "prepare": "yarn lint && yarn build",
+    "release": "release-it"
   },
   "peerDependencies": {
     "typedoc": "^0.14.2"
   },
   "devDependencies": {
+    "release-it": "^10.3.1",
     "tslint": "^5.13.1",
     "typedoc": "^0.14.2",
     "typescript": "^3.3.3333"
+  },
+  "release-it": {
+    "git": {
+      "tagName": "v${version}"
+    },
+    "github": {
+      "release": true
+    }
   }
 }

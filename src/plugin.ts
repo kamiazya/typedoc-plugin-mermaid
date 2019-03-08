@@ -36,7 +36,7 @@ export class MermaidPlugin extends ConverterComponent {
    * fillter logic for Comment exist
    */
   private static filterComment(comment: undefined | Comment): comment is Comment {
-    return comment !== undefined && comment instanceof Comment;
+    return comment !== undefined && !!comment;
   }
 
   /**
@@ -50,7 +50,7 @@ export class MermaidPlugin extends ConverterComponent {
    * return turn when tag's paramName is 'mermaid'
    */
   private static isMermaidCommentTag(tag: CommentTag): boolean {
-    return tag.paramName === 'mermaid';
+    return tag.tagName === 'mermaid';
   }
 
   /**

@@ -1,3 +1,3 @@
 var typedoc = typedoc || {};
             typedoc.search = typedoc.search || {};
-            typedoc.search.data = {"kinds":{"128":"Class","2048":"Method"},"rows":[{"id":0,"kind":128,"name":"Hoge","url":"classes/hoge.html","classes":"tsd-kind-class"},{"id":1,"kind":2048,"name":"exampleForGraphLR","url":"classes/hoge.html#exampleforgraphlr","classes":"tsd-kind-method tsd-parent-kind-class","parent":"Hoge"}]};
+            typedoc.search.data = {"kinds":{"128":"Class","2048":"Method"},"rows":[{"id":0,"kind":128,"name":"Hoge","url":"classes/hoge.html","classes":"tsd-kind-class"},{"id":1,"kind":2048,"name":"aliceGreetingFlow","url":"classes/hoge.html#alicegreetingflow","classes":"tsd-kind-method tsd-parent-kind-class","parent":"Hoge"},{"id":2,"kind":2048,"name":"multiGraphs","url":"classes/hoge.html#multigraphs","classes":"tsd-kind-method tsd-parent-kind-class","parent":"Hoge"}]};

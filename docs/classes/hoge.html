@@ -73,7 +73,7 @@
 					</div>
 					<dl class="tsd-comment-tags">
 						<dt>mermaid</dt>
-						<dd><h4 id="-"> </h4>
+						<dd><h4 id="make-typedoc-easy-to-use-with-mermaid-js">Make TypeDoc easy to use with mermaid.js</h4>
 							<div class="mermaid">graph TB
 								mermaid.js --> TypeDoc;
 						</div></dd>
@@ -95,7 +95,8 @@
 						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="hoge.html#exampleforgraphlr" class="tsd-kind-icon">example<wbr>For<wbr>GraphLR</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="hoge.html#alicegreetingflow" class="tsd-kind-icon">alice<wbr>Greeting<wbr>Flow</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class"><a href="hoge.html#multigraphs" class="tsd-kind-icon">multi<wbr>Graphs</a></li>
 							</ul>
 						</section>
 					</div>
@@ -104,26 +105,67 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Methods</h2>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="exampleforgraphlr" class="tsd-anchor"></a>
-					<h3>example<wbr>For<wbr>GraphLR</h3>
+					<a name="alicegreetingflow" class="tsd-anchor"></a>
+					<h3>alice<wbr>Greeting<wbr>Flow</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">example<wbr>For<wbr>GraphLR<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+						<li class="tsd-signature tsd-kind-icon">alice<wbr>Greeting<wbr>Flow<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/kamiazya/typedoc-plugin-mermaid/blob/367db4e/example/Hoge.ts#L18">Hoge.ts:18</a></li>
+									<li>Defined in <a href="https://github.com/kamiazya/typedoc-plugin-mermaid/blob/2a59cc2/example/Hoge.ts#L19">Hoge.ts:19</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Alice says &quot;Hello John, how are you?&quot; to Jone,
+									then John says &quot;Great!&quot;.</p>
+								</div>
 								<dl class="tsd-comment-tags">
 									<dt>mermaid</dt>
-									<dd><h4 id="-"> </h4>
+									<dd><h4 id="alice-greet-to-jone">Alice greet to Jone</h4>
+										<div class="mermaid">sequenceDiagram
+											Alice->>John: Hello John, how are you?
+											John-->>Alice: Great!
+									</div></dd>
+								</dl>
+							</div>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
+					<a name="multigraphs" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagAbstract">Abstract</span> multi<wbr>Graphs</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
+						<li class="tsd-signature tsd-kind-icon">multi<wbr>Graphs<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/kamiazya/typedoc-plugin-mermaid/blob/2a59cc2/example/Hoge.ts#L39">Hoge.ts:39</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Subgraphs.</p>
+								</div>
+								<dl class="tsd-comment-tags">
+									<dt>mermaid</dt>
+									<dd><h4 id="subgraphs-example">Subgraphs Example</h4>
 										<div class="mermaid">graph LR
-											A --- B
-											B-->C[fa:fa-ban forbidden]
-											B-->D(fa:fa-spinner);
+											A[Hard edge] -->|Link text| B(Round edge)
+											B --> C{Decision}
+											C -->|One| D[Result one]
+											C -->|Two| E[Result two]
+									</div></dd>
+									<dt>mermaid</dt>
+									<dd><h4 id="alice-greet-to-jone">Alice greet to Jone</h4>
+										<div class="mermaid">sequenceDiagram
+											Alice->>John: Hello John, how are you?
+											John-->>Alice: Great!
 									</div></dd>
 								</dl>
 							</div>
@@ -149,7 +191,10 @@
 						<a href="hoge.html" class="tsd-kind-icon">Hoge</a>
 						<ul>
 							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="hoge.html#exampleforgraphlr" class="tsd-kind-icon">example<wbr>For<wbr>GraphLR</a>
+								<a href="hoge.html#alicegreetingflow" class="tsd-kind-icon">alice<wbr>Greeting<wbr>Flow</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class">
+								<a href="hoge.html#multigraphs" class="tsd-kind-icon">multi<wbr>Graphs</a>
 							</li>
 						</ul>
 					</li>

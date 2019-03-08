@@ -1,4 +1,5 @@
 {
   "mode": "file",
-  "out": "../docs"
+  "out": "../docs",
+  "media": "../media"
 }

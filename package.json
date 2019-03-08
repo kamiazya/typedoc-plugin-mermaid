@@ -24,9 +24,11 @@
     "diagram"
   ],
   "scripts": {
+    "docs": "npm --prefix example run doc",
     "lint": "tslint --project ./src/tsconfig.json",
     "build": "rm -rf dist && tsc -p ./src/tsconfig.json",
     "prepare": "yarn lint && yarn build",
+    "prerelease": "npm run docs",
     "release": "release-it"
   },
   "peerDependencies": {

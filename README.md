@@ -23,14 +23,14 @@ export class Hoge {
 
 ↓↓↓
 
-![Example](./img/example.png)
-
+[![DEMO](./img/example.png)](https://kamiazya.github.io/typedoc-plugin-mermaid/classes/hoge.html)
 
 ## Installation
 
 The plugin can then be installed using [npm](https://www.npmjs.com/):
 
 [![NPM](https://nodei.co/npm/typedoc-plugin-mermaid.png)](https://nodei.co/npm/typedoc-plugin-mermaid/)
+
 ### npm
 
 ```sh

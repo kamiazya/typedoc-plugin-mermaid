@@ -121,7 +121,7 @@ export class MermaidPlugin extends ConverterComponent {
   /**
    * Triggered when the converter begins converting a project.
    */
-  private onBegin(context: Context) {
+  public onBegin(context: Context) {
     MermaidPlugin
       .mermaidTags(context)
       .forEach((tag) => {
@@ -134,7 +134,7 @@ export class MermaidPlugin extends ConverterComponent {
    * Triggered after a document has been rendered, just before it is written to disc.
    * Remove duplicate lines to tidy up output
    */
-  private onPageEnd(page: PageEvent) {
+  public onPageEnd(page: PageEvent) {
     if (page.contents !== undefined) {
       // convert
       page.contents = MermaidPlugin.convertPageContents(page.contents);

@@ -28,7 +28,7 @@
     "lint": "tslint --project ./src/tsconfig.json",
     "build": "rm -rf dist && tsc -p ./src/tsconfig.json",
     "prepare": "yarn lint && yarn build",
-    "prerelease": "prepare",
+    "prerelease": "npm run prepare",
     "release": "release-it"
   },
   "peerDependencies": {

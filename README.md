@@ -34,9 +34,7 @@ Write tsdoc with `@mermaid` annotation
  * graph TB
  *   mermaid.js --> TypeDoc;
  */
-export class Hoge {
-}
-
+export class Hoge { }
 ```
 
 [↓↓ DEMO ↓↓](https://kamiazya.github.io/typedoc-plugin-mermaid/classes/hoge.html)
@@ -57,7 +55,7 @@ or
 $ typedoc --plugin typedoc-plugin-mermaid -mmv 8.0.0
 ```
 
-### Set version by `typedoc.json`
+#### Set version by `typedoc.json`
 
 Add `vermaidVersion` config to `typedoc.json`.
 

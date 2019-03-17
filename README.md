@@ -4,6 +4,24 @@
 
 A plugin for TypeDoc that generates graphs for mermaid.js diagrams by @mermaid annotation.
 
+## Installation
+
+The plugin can then be installed using [npm](https://www.npmjs.com/):
+
+[![NPM](https://nodei.co/npm/typedoc-plugin-mermaid.png)](https://nodei.co/npm/typedoc-plugin-mermaid/)
+
+### npm
+
+```sh
+npm install --save-dev typedoc-plugin-mermaid
+```
+
+### yarn
+
+```sh
+yarn add -D typedoc-plugin-mermaid
+```
+
 ## Usage
 
 Write tsdoc with `@mermaid` annotation
@@ -25,22 +43,49 @@ export class Hoge {
 
 [![Example](./media/example.png)](https://kamiazya.github.io/typedoc-plugin-mermaid/classes/hoge.html)
 
-## Installation
+## Additional Options
 
-The plugin can then be installed using [npm](https://www.npmjs.com/):
+### Example: If you want to use `mermaid.js@8.0.0`
 
-[![NPM](https://nodei.co/npm/typedoc-plugin-mermaid.png)](https://nodei.co/npm/typedoc-plugin-mermaid/)
+#### Set version by CLI
 
-### npm
+Add `-mmv/--mermaidVersion 8.0.0` option.
 
-```sh
-npm install --save-dev typedoc-plugin-mermaid
+```bash
+$ typedoc --plugin typedoc-plugin-mermaid --mermaidVersion 8.0.0
+or
+$ typedoc --plugin typedoc-plugin-mermaid -mmv 8.0.0
 ```
 
-### yarn
+### Set version by `typedoc.json`
 
-```sh
-yarn add -D typedoc-plugin-mermaid
+Add `vermaidVersion` config to `typedoc.json`.
+
+```json
+{
+  "mode": "file",
+  "out": "../docs",
+  "vermaidVersion": "8.0.0"
+}
+```
+
+### Help
+
+```bash
+$ typedoc --plugin typedoc-plugin-mermaid -h
+Loaded plugin typedoc-plugin-mermaid
+Usage:
+ typedoc --mode modules --out path/to/documentation path/to/sourcefiles
+
+TypeDoc options:
+...
+
+ -mmv, --mermaidVersion    Mermaid Plugin: Version of mermaid.js.
+
+...
+
+TypeScript options:
+See https://www.typescriptlang.org/docs/handbook/compiler-options.html
 ```
 
 ## License

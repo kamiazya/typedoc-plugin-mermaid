@@ -1,8 +1,7 @@
-import { Application } from 'typedoc';
+import { DUMMY_APPLICATION_OWNER } from 'typedoc/dist/lib/utils/component';
 import { MermaidPlugin } from '../src/plugin';
 
-const app = new Application({});
-const plugin = new MermaidPlugin(app.converter);
+const plugin = new MermaidPlugin(DUMMY_APPLICATION_OWNER);
 
 describe('MermaidPlugin e2e', () => {
   it('onBegin not to throw Exeption', () => {
@@ -50,7 +49,7 @@ describe('MermaidPlugin e2e', () => {
 
     contexts
       .forEach(context =>
-        expect(() => plugin.onBegin(context)).not.toThrow());
+        expect(() => plugin.onResolveBegin(context)).not.toThrow());
   });
 
   it('onPageEnd not to throw Exeption', () => {

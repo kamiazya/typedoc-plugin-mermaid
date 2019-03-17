@@ -3,6 +3,8 @@ import { Component, ConverterComponent } from 'typedoc/dist/lib/converter/compon
 import { Context } from 'typedoc/dist/lib/converter/context';
 import { Comment, CommentTag } from 'typedoc/dist/lib/models/comments';
 import { PageEvent } from 'typedoc/dist/lib/output/events';
+import { Option } from 'typedoc/dist/lib/utils';
+import { ParameterType } from 'typedoc/dist/lib/utils/options/declaration';
 
 /**
  * Mermaid plugin component.
@@ -11,51 +13,24 @@ import { PageEvent } from 'typedoc/dist/lib/output/events';
 export class MermaidPlugin extends ConverterComponent {
 
   /**
-   * The first line of text wraps h4.
-   * The other wraps by div classed mermaid.
-   */
-  public static convertCommentTagText(tagText: string): string {
-    const texts = tagText.split('\n');
-    // take first line
-    const title = texts.shift();
-    // the other
-    const mermaid = texts.join('\n');
-    return `#### ${title} \n\n <div class="mermaid">${mermaid}</div>`;
-  }
-
-  /**
-   * Insert custom script before closing body tag.
-   */
-  public static convertPageContents(contents: string): string {
-    if (this.BODY_CLOSINNG_TAG.test(contents)) {
-      return contents.replace(
-        this.BODY_CLOSINNG_TAG,
-        this.CUSTOM_SCRIPTS_AND_BODY_CLOSINNG_TAG);
-    }
-    return contents;
-  }
-
-  /**
-   * Regex literal that matches body closing tag.
-   */
-  private static BODY_CLOSINNG_TAG = /<\/body>/;
-
-  /**
    * 1. Load mermaid.js liblary.
    * 2. Initialize mermaid.
    * 3. Close body tag.
    */
-  private static CUSTOM_SCRIPTS_AND_BODY_CLOSINNG_TAG = `
-    <script
-      src="https://unpkg.com/mermaid@7.1.2/dist/mermaid.min.js"
-    ></script>
-    <script>
-    mermaid.initialize({
-      startOnLoad:true
-    });
-    </script>
-    </body>
-  `;
+  private get customScriptsAndBodyClosinngTag(): string {
+    const mermaidVersion = this.mermaidVersion;
+    return `
+      <script
+        src="https://unpkg.com/mermaid@${mermaidVersion}/dist/mermaid.min.js"
+      ></script>
+      <script>
+      mermaid.initialize({
+        startOnLoad: true,
+      });
+      </script>
+      </body>
+    `;
+  }
 
   /**
    * fillter logic for Comment exist
@@ -105,13 +80,55 @@ export class MermaidPlugin extends ConverterComponent {
       .filter(this.isMermaidCommentTag);
   }
 
+  @Option({
+    name: 'mermaidVersion',
+    short: 'mmv',
+    defaultValue: '7.1.2',
+    help: 'Mermaid Plugin: Version of mermaid.js.',
+    type: ParameterType.String,
+  })
+  /**
+   * Version of mermaid.js.
+   */
+  public mermaidVersion: string;
+
+  /**
+   * Regex literal that matches body closing tag.
+   */
+  private readonly BODY_CLOSINNG_TAG = /<\/body>/;
+
+  /**
+   * The first line of text wraps h4.
+   * The other wraps by div classed mermaid.
+   */
+  public convertCommentTagText(tagText: string): string {
+    const texts = tagText.split('\n');
+    // take first line
+    const title = texts.shift();
+    // the other
+    const mermaid = texts.join('\n');
+    return `#### ${title} \n\n <div class="mermaid">${mermaid}</div>`;
+  }
+
+  /**
+   * Insert custom script before closing body tag.
+   */
+  public convertPageContents(contents: string): string {
+    if (this.BODY_CLOSINNG_TAG.test(contents)) {
+      return contents.replace(
+        this.BODY_CLOSINNG_TAG,
+        this.customScriptsAndBodyClosinngTag);
+    }
+    return contents;
+  }
+
   /**
    * listen to event on initialisation
    */
   public initialize() {
     this
       .listenTo(this.owner, {
-        [Converter.EVENT_RESOLVE_BEGIN]: this.onBegin,
+        [Converter.EVENT_RESOLVE_BEGIN]: this.onResolveBegin,
       })
       .listenTo(this.application.renderer, {
         [PageEvent.END]: this.onPageEnd,
@@ -121,12 +138,12 @@ export class MermaidPlugin extends ConverterComponent {
   /**
    * Triggered when the converter begins converting a project.
    */
-  public onBegin(context: Context) {
+  public onResolveBegin(context: Context) {
     MermaidPlugin
       .mermaidTags(context)
       .forEach((tag) => {
         // convert
-        tag.text = MermaidPlugin.convertCommentTagText(tag.text);
+        tag.text = this.convertCommentTagText(tag.text);
       });
   }
 
@@ -137,7 +154,7 @@ export class MermaidPlugin extends ConverterComponent {
   public onPageEnd(page: PageEvent) {
     if (page.contents !== undefined) {
       // convert
-      page.contents = MermaidPlugin.convertPageContents(page.contents);
+      page.contents = this.convertPageContents(page.contents);
     }
   }
 }

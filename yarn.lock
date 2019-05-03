@@ -3773,9 +3773,9 @@ registry-url@^3.0.3:
     rc "^1.0.1"
 
 release-it@^11.0.0:
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/release-it/-/release-it-11.0.0.tgz#4aaf47c775c914bfa89f5f4dd699e81207de5ed5"
-  integrity sha512-jgwCz5/9lgw+8rB6WTwnAaSAJCdbThZgN+YtQuMau8fr0CqS6JDR8kSHOp+IRt2za83hqlAJYXYJV3PILw7hUg==
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/release-it/-/release-it-11.0.1.tgz#aa5b6482332e693af9198297d2617644d09b38c3"
+  integrity sha512-O1RvOBoi4y9JVvdAA2eNicJV8TcI2Yd9kpxp9V6xC395AU8kqy1GkUbmqNHdf0WMlNM0wu6Xua55MxLXqy4kJA==
   dependencies:
     "@octokit/rest" "16.25.0"
     async-retry "1.2.3"

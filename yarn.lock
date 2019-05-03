@@ -834,14 +834,6 @@ builtin-modules@^1.1.1:
   resolved "https://registry.yarnpkg.com/builtin-modules/-/builtin-modules-1.1.1.tgz#270f076c5a72c02f5b65a47df94c5fe3a278892f"
   integrity sha1-Jw8HbFpywC9bZaR9+Uxf46J4iS8=
 
-bump-file@2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/bump-file/-/bump-file-2.0.0.tgz#171475dc8a4ab0bd8ce8469860337446eb886fb5"
-  integrity sha512-Kt2FoAljRS630vFx+asbCBiCp1PqaJ2PuCby+P+Fl8LMsUnGaxw/C2YxxQe4SiCJBs3Zt8A28u3wQRwnYMtuUw==
-  dependencies:
-    detect-indent "5.0.0"
-    semver "5.4.1"
-
 cache-base@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/cache-base/-/cache-base-1.0.1.tgz#0a7f46416831c8b662ee36fe4e7c59d76f666ab2"
@@ -1262,11 +1254,6 @@ deprecation@^1.0.1:
   resolved "https://registry.yarnpkg.com/deprecation/-/deprecation-1.0.1.tgz#2df79b79005752180816b7b6e079cbd80490d711"
   integrity sha512-ccVHpE72+tcIKaGMql33x5MAjKQIZrk+3x2GbJ7TeraUCZWHoT+KSZpoC+JQFsUBlSTXUrBaGiF0j6zVTepPLg==
 
-detect-indent@5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/detect-indent/-/detect-indent-5.0.0.tgz#3871cc0a6a002e8c3e5b3cf7f336264675f06b9d"
-  integrity sha1-OHHMCmoALow+Wzz38zYmRnXwa50=
-
 detect-libc@^1.0.2:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/detect-libc/-/detect-libc-1.0.3.tgz#fa137c4bd698edf55cd5cd02ac559f91a4c4ba9b"
@@ -1589,7 +1576,7 @@ fill-range@^4.0.0:
     repeat-string "^1.6.1"
     to-regex-range "^2.1.0"
 
-find-up@^3.0.0:
+find-up@3.0.0, find-up@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/find-up/-/find-up-3.0.0.tgz#49169f1d7993430646da61ecc5ae355c21c97b73"
   integrity sha512-1yD6RmLI1XBfxugvORwlck6f75tYL+iR0jqwsOrOxMZyGYqUuDhJ0l4AXdO1iX/FTs9cBAMEk1gWSEx1kSbylg==
@@ -3772,18 +3759,18 @@ registry-url@^3.0.3:
   dependencies:
     rc "^1.0.1"
 
-release-it@^11.0.0:
-  version "11.0.1"
-  resolved "https://registry.yarnpkg.com/release-it/-/release-it-11.0.1.tgz#aa5b6482332e693af9198297d2617644d09b38c3"
-  integrity sha512-O1RvOBoi4y9JVvdAA2eNicJV8TcI2Yd9kpxp9V6xC395AU8kqy1GkUbmqNHdf0WMlNM0wu6Xua55MxLXqy4kJA==
+release-it@^12.0.0:
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/release-it/-/release-it-12.0.0.tgz#5d2928af86e1dd5ad7dacb865477b73bf8398b53"
+  integrity sha512-omIZdfI2dW9JSugjcMFzA1Ehjn6yys/5OSPVrWQslPRLn4QjwBeeaEEmKGlf1+Kroc8yo3uz+thh50n1BQkN/w==
   dependencies:
     "@octokit/rest" "16.25.0"
     async-retry "1.2.3"
-    bump-file "2.0.0"
     chalk "2.4.2"
     debug "4.1.1"
     deprecated-obj "1.0.0"
     detect-repo-changelog "1.0.1"
+    find-up "3.0.0"
     form-data "2.3.3"
     git-url-parse "11.1.2"
     globby "9.2.0"
@@ -3999,11 +3986,6 @@ semver-diff@^2.0.0:
   version "5.7.0"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.7.0.tgz#790a7cf6fea5459bac96110b29b60412dc8ff96b"
   integrity sha512-Ya52jSX2u7QKghxeoFGpLwCtGlt7j0oY9DYb5apt9nPlJ42ID+ulTXESnt/qAQcoSERyZ5sl3LDIOw0nAn/5DA==
-
-semver@5.4.1:
-  version "5.4.1"
-  resolved "https://registry.yarnpkg.com/semver/-/semver-5.4.1.tgz#e059c09d8571f0540823733433505d3a2f00b18e"
-  integrity sha512-WfG/X9+oATh81XtllIo/I8gOiY9EXRdv1cQdyykeXK17YcUW3EXUAi2To4pcH6nZtJPr7ZOpM5OMyWJZm+8Rsg==
 
 semver@6.0.0:
   version "6.0.0"

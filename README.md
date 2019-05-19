@@ -88,4 +88,12 @@ See https://www.typescriptlang.org/docs/handbook/compiler-options.html
 
 ## License
 
+This software is released under the MIT License, see LICENSE.
+
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkamiazya%2Ftypedoc-plugin-mermaid.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkamiazya%2Ftypedoc-plugin-mermaid?ref=badge_large)
+
+## Author
+
+[kamiazya(Yuki Yamazaki)](https://github.com/kamiazya)
+
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/W7W5VDNO)

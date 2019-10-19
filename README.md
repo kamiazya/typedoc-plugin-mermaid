@@ -37,9 +37,9 @@ Write tsdoc with `@mermaid` annotation
 export class Hoge { }
 ```
 
-[↓↓ DEMO ↓↓](https://kamiazya.github.io/typedoc-plugin-mermaid/classes/hoge.html)
+[↓↓ DEMO ↓↓](https://kamiazya.github.io/typedoc-plugin-samples/classes/hoge.html)
 
-[![Example](./media/example.png)](https://kamiazya.github.io/typedoc-plugin-mermaid/classes/hoge.html)
+[![Example](./media/example.png)](https://kamiazya.github.io/typedoc-plugin-samples/classes/hoge.html)
 
 ## Additional Options
 

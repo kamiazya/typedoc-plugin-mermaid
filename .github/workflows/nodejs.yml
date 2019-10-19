@@ -1,0 +1,69 @@
+name: Node CI
+
+on: [push]
+
+jobs:
+  tests:
+    name: Test on node ${{ matrix.node-version }} and ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+        os: [ubuntu-latest, macos-latest]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: install global module
+      run: |
+        npm install -g yarn
+    - name: Install dependencies
+      run: yarn --frozen-lockfile --ignore-optional
+      env:
+        CI: true
+    - name: Lint
+      run: yarn lint
+      env:
+        CI: true
+    - name: Test and publish code coverage
+      uses: paambaati/codeclimate-action@v2.2.1
+      env:
+        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+      with:
+        coverageCommand: yarn test --coverage
+    - name: Build
+      run: yarn build
+      env:
+        CI: true
+
+  publish:
+    name: Publish to NPM
+    runs-on: ubuntu-latest
+    needs:
+      - tests
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@v1
+      with:
+        node-version: 12.x
+        registry-url: https://registry.npmjs.org
+    - name: install global module
+      run: |
+        npm install -g yarn
+      if: contains(github.ref, 'tags/v')
+    - name: Install dependencies
+      run: yarn install --frozen-lockfile --ignore-optional
+      if: contains(github.ref, 'tags/v')
+      env:
+        CI: true
+    - name: Build
+      run: yarn build
+      if: contains(github.ref, 'tags/v')
+    - name: Publish to NPM
+      run: npm publish
+      env:
+        NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+      if: contains(github.ref, 'tags/v')

@@ -3,8 +3,6 @@ import { Component, ConverterComponent } from 'typedoc/dist/lib/converter/compon
 import { Context } from 'typedoc/dist/lib/converter/context';
 import { Comment, CommentTag } from 'typedoc/dist/lib/models/comments';
 import { PageEvent } from 'typedoc/dist/lib/output/events';
-import { Option } from 'typedoc/dist/lib/utils';
-import { ParameterType } from 'typedoc/dist/lib/utils/options/declaration';
 
 /**
  * Mermaid plugin component.
@@ -18,10 +16,9 @@ export class MermaidPlugin extends ConverterComponent {
    * 3. Close body tag.
    */
   private get customScriptsAndBodyClosinngTag(): string {
-    const mermaidVersion = this.mermaidVersion;
     return `
       <script
-        src="https://unpkg.com/mermaid@${mermaidVersion}/dist/mermaid.min.js"
+        src="https://unpkg.com/mermaid/dist/mermaid.min.js"
       ></script>
       <script>
       mermaid.initialize({
@@ -79,18 +76,6 @@ export class MermaidPlugin extends ConverterComponent {
       // filter tag that paramName is 'mermaid'
       .filter(this.isMermaidCommentTag);
   }
-
-  @Option({
-    name: 'mermaidVersion',
-    short: 'mmv',
-    defaultValue: '7.1.2',
-    help: 'Mermaid Plugin: Version of mermaid.js.',
-    type: ParameterType.String,
-  })
-  /**
-   * Version of mermaid.js.
-   */
-  public mermaidVersion: string;
 
   /**
    * Regex literal that matches body closing tag.

@@ -33,7 +33,7 @@
     "release": "release-it"
   },
   "peerDependencies": {
-    "typedoc": "^0.15.0"
+    "typedoc": "*"
   },
   "devDependencies": {
     "@types/jest": "^24.0.9",
@@ -43,8 +43,8 @@
     "release-it": "^12.0.1",
     "ts-jest": "^24.0.0",
     "tslint": "^5.13.1",
-    "typedoc": "^0.15.0",
-    "typescript": "^3.3.3333"
+    "typedoc": "^0.16.9",
+    "typescript": "^3.7.5"
   },
   "release-it": {
     "git": {

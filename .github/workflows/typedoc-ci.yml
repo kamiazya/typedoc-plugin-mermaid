@@ -35,11 +35,11 @@ jobs:
         run: yarn link
       - name: TypeDoc integration test
         run: |
-          mkdir -p example/src && cd example
+          cd ~ && mkdir -p example/src && cd example
           yarn init -y
           echo 'export class HelloWorld {}' >> src/hello-world.ts
           yarn add -D typedoc@${{ matrix.typedoc-version }}
           yarn link typedoc-plugin-mermaid
           yarn run typedoc --mode modules \
             --plugin typedoc-plugin-mermaid \
-            --out docs .
+            --out docs src

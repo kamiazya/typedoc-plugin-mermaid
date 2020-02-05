@@ -17,9 +17,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: install global module
-      run: |
-        npm install -g yarn
     - name: Install dependencies
       run: yarn --frozen-lockfile --ignore-optional
       env:

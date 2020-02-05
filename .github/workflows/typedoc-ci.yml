@@ -38,9 +38,11 @@ jobs:
         run: |
           cd ~ && mkdir -p example/src && cd example
           yarn init -y
-          echo 'export class HelloWorld {}' >> src/hello-world.ts
           yarn add -D typedoc@${{ matrix.typedoc-version }}
+          yarn run tsc --init
+          echo 'export class HelloWorld {}' >> src/hello-world.ts
           yarn link typedoc-plugin-mermaid
-          yarn run typedoc --mode modules \
+          yarn run typedoc --mode file \
             --plugin typedoc-plugin-mermaid \
-            --out docs src
+            --out docs \
+            src

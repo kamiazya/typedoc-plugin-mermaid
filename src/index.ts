@@ -1,7 +1,7 @@
 import { Application } from 'typedoc/dist/lib/application';
 import { MermaidPlugin } from './plugin';
 
-export default (PluginHost: Application) => {
+module.exports = (PluginHost: Application) => {
   const app = PluginHost.owner;
   if (app.converter.hasComponent('mermaid')) {
     return;

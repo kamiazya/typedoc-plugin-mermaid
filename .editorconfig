@@ -6,7 +6,3 @@ indent_size = 2
 charset = utf-8
 trim_trailing_whitespace = true
 insert_final_newline = true
-
-[*.json]
-trim_trailing_whitespace = false
-insert_final_newline = false

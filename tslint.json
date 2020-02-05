@@ -4,9 +4,11 @@
     "tslint:recommended",
     "tslint-config-prettier"
   ],
+  "jsRules": {},
   "rules": {
     "prettier": true,
     "import-spacing": true,
+    "array-type": false,
     "quotemark": [true, "single"],
     "no-console": [false],
     "arrow-parens": false,

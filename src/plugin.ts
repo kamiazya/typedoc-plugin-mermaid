@@ -9,7 +9,6 @@ import { PageEvent } from 'typedoc/dist/lib/output/events';
  */
 @Component({ name: 'mermaid' })
 export class MermaidPlugin extends ConverterComponent {
-
   /**
    * 1. Load mermaid.js library.
    * 2. Initialize mermaid.
@@ -52,27 +51,13 @@ export class MermaidPlugin extends ConverterComponent {
    * get CommentTags for using `@mermaid` annotation from Context.
    */
   private static mermaidTags(context: Context): CommentTag[] {
-    return Object
-      // get reflection from context
-      .values(context.project.reflections)
-
-      // get Comment from Reflection
-      .map(reflection => reflection.comment)
-
-      // filter only comment exist
-      .filter(this.filterComment)
-
-      // get CommentTags from Comment
-      .map(comment => comment.tags)
-
-      // filter only CommentTags exist
-      .filter(this.filterCommentTags)
-
-      // merge all CommentTags
-      .reduce((a, b) => a.concat(b), [])
-
-      // filter tag that paramName is 'mermaid'
-      .filter(this.isMermaidCommentTag);
+    return Object.values(context.project.reflections) // get reflection from context
+      .map(reflection => reflection.comment) // get Comment from Reflection
+      .filter(this.filterComment) // filter only comment exist
+      .map(comment => comment.tags) // get CommentTags from Comment
+      .filter(this.filterCommentTags) // filter only CommentTags exist
+      .reduce((a, b) => a.concat(b), []) // merge all CommentTags
+      .filter(this.isMermaidCommentTag); // filter tag that paramName is 'mermaid'
   }
 
   /**
@@ -98,9 +83,7 @@ export class MermaidPlugin extends ConverterComponent {
    */
   public convertPageContents(contents: string): string {
     if (this.BODY_CLOSING_TAG.test(contents)) {
-      return contents.replace(
-        this.BODY_CLOSING_TAG,
-        MermaidPlugin.customScriptsAndBodyClosingTag);
+      return contents.replace(this.BODY_CLOSING_TAG, MermaidPlugin.customScriptsAndBodyClosingTag);
     }
     return contents;
   }
@@ -109,25 +92,21 @@ export class MermaidPlugin extends ConverterComponent {
    * listen to event on initialization
    */
   public initialize() {
-    this
-      .listenTo(this.owner, {
-        [Converter.EVENT_RESOLVE_BEGIN]: this.onResolveBegin,
-      })
-      .listenTo(this.application.renderer, {
-        [PageEvent.END]: this.onPageEnd,
-      });
+    this.listenTo(this.owner, {
+      [Converter.EVENT_RESOLVE_BEGIN]: this.onResolveBegin,
+    }).listenTo(this.application.renderer, {
+      [PageEvent.END]: this.onPageEnd,
+    });
   }
 
   /**
    * Triggered when the converter begins converting a project.
    */
   public onResolveBegin(context: Context) {
-    MermaidPlugin
-      .mermaidTags(context)
-      .forEach((tag) => {
-        // convert
-        tag.text = this.convertCommentTagText(tag.text);
-      });
+    MermaidPlugin.mermaidTags(context).forEach(tag => {
+      // convert
+      tag.text = this.convertCommentTagText(tag.text);
+    });
   }
 
   /**

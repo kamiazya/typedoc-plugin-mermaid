@@ -1,12 +1,18 @@
 {
-    "defaultSeverity": "error",
-    "extends": [
-        "tslint:recommended"
-    ],
-    "rules": {
-      "quotemark": [true, "single"],
-      "no-console": [false],
-      "arrow-parens": false,
-      "object-literal-sort-keys": false
-    }
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended",
+    "tslint-config-prettier"
+  ],
+  "rules": {
+    "prettier": true,
+    "import-spacing": true,
+    "quotemark": [true, "single"],
+    "no-console": [false],
+    "arrow-parens": false,
+    "object-literal-sort-keys": false
+  },
+  "rulesDirectory": [
+    "tslint-plugin-prettier"
+  ]
 }

@@ -17,9 +17,6 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: install global module
-      run: |
-        npm install -g yarn
     - name: Install dependencies
       run: yarn --frozen-lockfile --ignore-optional
       env:
@@ -28,12 +25,8 @@ jobs:
       run: yarn lint
       env:
         CI: true
-    - name: Test and publish code coverage
-      uses: paambaati/codeclimate-action@v2.2.1
-      env:
-        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
-      with:
-        coverageCommand: yarn test --coverage
+    - name: Test
+      run: yarn test
     - name: Build
       run: yarn build
       env:

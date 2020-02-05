@@ -11,6 +11,10 @@
     "url": "https://github.com/kamiazya/typedoc-plugin-mermaid/issues"
   },
   "homepage": "https://kamiazya.github.io/typedoc-plugin-mermaid/",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/kamiazya"
+  },
   "files": [
     "dist/"
   ],
@@ -24,34 +28,25 @@
     "diagram"
   ],
   "scripts": {
-    "docs": "npm --prefix example run doc",
     "lint": "tslint --project ./src/tsconfig.json",
-    "build": "rm -rf dist && tsc -p ./src/tsconfig.json",
-    "test": "jest",
-    "prepare": "yarn lint && yarn build",
-    "prerelease": "npm run prepare",
-    "release": "release-it"
+    "build": "tsc -p ./src/tsconfig.json",
+    "test": "jest"
   },
   "peerDependencies": {
-    "typedoc": "*"
+    "typedoc": "^0.11.0"
   },
   "devDependencies": {
     "@types/jest": "^24.0.9",
+    "@types/node": "^13.7.0",
     "jest": "^24.3.1",
     "jest-haste-map": "^24.0.0",
     "jest-resolve": "^24.1.0",
     "prettier": "^1.19.1",
-    "release-it": "^12.0.1",
     "ts-jest": "^24.0.0",
     "tslint": "^5.20.1",
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.1.0",
     "typedoc": "^0.16.9",
     "typescript": "^3.7.5"
-  },
-  "release-it": {
-    "git": {
-      "tagName": "v${version}"
-    }
   }
 }

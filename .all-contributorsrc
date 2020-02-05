@@ -16,6 +16,15 @@
         "test",
         "doc"
       ]
+    },
+    {
+      "login": "BobKerns",
+      "name": "Bob Kerns",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1154903?v=4",
+      "profile": "http://bobkerns.typepad.com",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,

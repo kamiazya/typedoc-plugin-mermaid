@@ -11,6 +11,10 @@
     "url": "https://github.com/kamiazya/typedoc-plugin-mermaid/issues"
   },
   "homepage": "https://kamiazya.github.io/typedoc-plugin-mermaid/",
+  "funding": {
+    "type": "github",
+    "url": "https://github.com/sponsors/kamiazya"
+  },
   "files": [
     "dist/"
   ],

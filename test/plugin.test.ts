@@ -26,7 +26,7 @@ describe('MermaidPlugin', () => {
     expect(result).toMatchSnapshot();
   });
 
-  it('convert PageContents returns same value if body closing tag not exixt', () => {
+  it('convert PageContents returns same value if body closing tag not exist', () => {
     const input = 'hoge';
     const result = plugin.convertPageContents(input);
     expect(result).toEqual('hoge');

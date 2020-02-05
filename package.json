@@ -15,9 +15,6 @@
     "type": "github",
     "url": "https://github.com/sponsors/kamiazya"
   },
-  "files": [
-    "dist/"
-  ],
   "author": "kamiazya <yuki@kamiazya.tech>",
   "license": "MIT",
   "keywords": [

@@ -1,2 +1,15 @@
-coverage
-.nyc_output
+.all-contributorsrc
+.bettercodehub.yml
+.editorconfig
+.github
+.gitignore
+.prettierignore
+.prettierrc.json
+.vscode
+CODE_OF_CONDUCT.md
+config
+jest.config.js
+src
+test
+tsconfig.json
+tslint.json

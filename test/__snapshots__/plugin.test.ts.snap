@@ -6,18 +6,18 @@ exports[`MermaidPlugin convert CommentTag 1`] = `
  <div class=\\"mermaid\\">graph</div>"
 `;
 
-exports[`MermaidPlugin convert PageContents returns same value if body closing tag not exixt 1`] = `"hoge"`;
+exports[`MermaidPlugin convert PageContents returns same value if body closing tag not exist 1`] = `"hoge"`;
 
 exports[`MermaidPlugin convert PageContents returns script tag for mermaid.js, initialize mermaid script, and body closing tag 1`] = `
 "
-      <script
-        src=\\"https://unpkg.com/mermaid/dist/mermaid.min.js\\"
-      ></script>
-      <script>
-      mermaid.initialize({
-        startOnLoad: true,
-      });
-      </script>
-      </body>
-    "
+    <script
+      src=\\"https://unpkg.com/mermaid/dist/mermaid.min.js\\"
+    ></script>
+    <script>
+    mermaid.initialize({
+      startOnLoad: true,
+    });
+    </script>
+    </body>
+  "
 `;

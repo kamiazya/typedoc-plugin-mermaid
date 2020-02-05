@@ -11,33 +11,31 @@ import { PageEvent } from 'typedoc/dist/lib/output/events';
 export class MermaidPlugin extends ConverterComponent {
 
   /**
-   * 1. Load mermaid.js liblary.
+   * 1. Load mermaid.js library.
    * 2. Initialize mermaid.
    * 3. Close body tag.
    */
-  private get customScriptsAndBodyClosinngTag(): string {
-    return `
-      <script
-        src="https://unpkg.com/mermaid/dist/mermaid.min.js"
-      ></script>
-      <script>
-      mermaid.initialize({
-        startOnLoad: true,
-      });
-      </script>
-      </body>
-    `;
-  }
+  private static customScriptsAndBodyClosingTag = `
+    <script
+      src="https://unpkg.com/mermaid/dist/mermaid.min.js"
+    ></script>
+    <script>
+    mermaid.initialize({
+      startOnLoad: true,
+    });
+    </script>
+    </body>
+  `;
 
   /**
-   * fillter logic for Comment exist
+   * filter logic for Comment exist
    */
   private static filterComment(comment: undefined | Comment): comment is Comment {
     return comment !== undefined && !!comment;
   }
 
   /**
-   * fillter logic for CommentTags exist
+   * filter logic for CommentTags exist
    */
   private static filterCommentTags(tags: CommentTag[] | undefined): tags is CommentTag[] {
     return tags !== undefined && !!tags;
@@ -51,7 +49,7 @@ export class MermaidPlugin extends ConverterComponent {
   }
 
   /**
-   * get CommentTags for using `@mermaid` anotation from Context.
+   * get CommentTags for using `@mermaid` annotation from Context.
    */
   private static mermaidTags(context: Context): CommentTag[] {
     return Object
@@ -80,7 +78,7 @@ export class MermaidPlugin extends ConverterComponent {
   /**
    * Regex literal that matches body closing tag.
    */
-  private readonly BODY_CLOSINNG_TAG = /<\/body>/;
+  private readonly BODY_CLOSING_TAG = /<\/body>/;
 
   /**
    * The first line of text wraps h4.
@@ -99,16 +97,16 @@ export class MermaidPlugin extends ConverterComponent {
    * Insert custom script before closing body tag.
    */
   public convertPageContents(contents: string): string {
-    if (this.BODY_CLOSINNG_TAG.test(contents)) {
+    if (this.BODY_CLOSING_TAG.test(contents)) {
       return contents.replace(
-        this.BODY_CLOSINNG_TAG,
-        this.customScriptsAndBodyClosinngTag);
+        this.BODY_CLOSING_TAG,
+        MermaidPlugin.customScriptsAndBodyClosingTag);
     }
     return contents;
   }
 
   /**
-   * listen to event on initialisation
+   * listen to event on initialization
    */
   public initialize() {
     this

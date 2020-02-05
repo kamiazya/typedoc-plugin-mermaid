@@ -4,7 +4,7 @@ import { MermaidPlugin } from '../src/plugin';
 const plugin = new MermaidPlugin(DUMMY_APPLICATION_OWNER);
 
 describe('MermaidPlugin e2e', () => {
-  it('onBegin not to throw Exeption', () => {
+  it('onBegin not to throw Exception', () => {
     const contexts: any[] = [
       {
         project: {
@@ -52,7 +52,7 @@ describe('MermaidPlugin e2e', () => {
         expect(() => plugin.onResolveBegin(context)).not.toThrow());
   });
 
-  it('onPageEnd not to throw Exeption', () => {
+  it('onPageEnd not to throw Exception', () => {
     const pageEvents: any[] = [
       { contents: '' },
       { },

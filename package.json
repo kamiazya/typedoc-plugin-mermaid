@@ -36,7 +36,7 @@
     "@types/jest": "^24.0.9",
     "@types/node": "^13.7.0",
     "jest": "^24.3.1",
-    "jest-haste-map": "^24.0.0",
+    "jest-haste-map": "^25.2.3",
     "jest-resolve": "^24.1.0",
     "prettier": "^1.19.1",
     "ts-jest": "^24.0.0",

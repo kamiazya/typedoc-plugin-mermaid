@@ -29,6 +29,9 @@
     "build": "tsc -p ./src/tsconfig.json",
     "test": "jest"
   },
+  "dependencies": {
+    "html-escaper": "^2.0.2"
+  },
   "peerDependencies": {
     "typedoc": "^0.11.0"
   },

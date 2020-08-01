@@ -1,8 +1,10 @@
+// @ts-ignore
+import * as html from 'html-escaper';
 import { Converter } from 'typedoc/dist/lib/converter';
 import { Component, ConverterComponent } from 'typedoc/dist/lib/converter/components';
 import { Context } from 'typedoc/dist/lib/converter/context';
 import { Comment, CommentTag } from 'typedoc/dist/lib/models/comments';
-import { PageEvent } from 'typedoc/dist/lib/output/events';
+import { MarkdownEvent, PageEvent } from 'typedoc/dist/lib/output/events';
 
 /**
  * Mermaid plugin component.
@@ -25,6 +27,9 @@ export class MermaidPlugin extends ConverterComponent {
     </script>
     </body>
   `;
+
+  private static markdownStartMermaid = '\n```mermaid\n';
+  private static markdownEndMermaid = '\n```\n';
 
   /**
    * filter logic for Comment exist
@@ -96,7 +101,14 @@ export class MermaidPlugin extends ConverterComponent {
       [Converter.EVENT_RESOLVE_BEGIN]: this.onResolveBegin,
     }).listenTo(this.application.renderer, {
       [PageEvent.END]: this.onPageEnd,
-    });
+    }).listenTo(
+      this.application.renderer,
+      {
+        [MarkdownEvent.PARSE]: this.onParseMarkdown,
+      },
+      undefined,
+      100,
+    );
   }
 
   /**
@@ -118,5 +130,23 @@ export class MermaidPlugin extends ConverterComponent {
       // convert
       page.contents = this.convertPageContents(page.contents);
     }
+  }
+
+  public onParseMarkdown(event: MarkdownEvent) {
+    event.parsedText = this.replaceMarkdownMermaidCodeBlocks(event.parsedText);
+  }
+
+  public replaceMarkdownMermaidCodeBlocks(s: string) {
+    let out = '';
+    let i = 0;
+    let j = -1;
+    // tslint:disable-next-line: no-conditional-assignment
+    while ((j = s.indexOf(MermaidPlugin.markdownStartMermaid, i)) >= 0) {
+      const start = j + MermaidPlugin.markdownStartMermaid.length;
+      const end = s.indexOf(MermaidPlugin.markdownEndMermaid, start);
+      out += `${s.slice(i, j + 1)}<div class="mermaid">${html.escape(s.slice(start, end))}</div>`;
+      i = end + MermaidPlugin.markdownEndMermaid.length - 1;
+    }
+    return out + s.slice(i);
   }
 }

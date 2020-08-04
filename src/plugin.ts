@@ -1,4 +1,3 @@
-// @ts-ignore
 import * as html from 'html-escaper';
 import { Converter } from 'typedoc/dist/lib/converter';
 import { Component, ConverterComponent } from 'typedoc/dist/lib/converter/components';
@@ -139,9 +138,11 @@ export class MermaidPlugin extends ConverterComponent {
   public replaceMarkdownMermaidCodeBlocks(s: string) {
     let out = '';
     let i = 0;
-    let j = -1;
-    // tslint:disable-next-line: no-conditional-assignment
-    while ((j = s.indexOf(MermaidPlugin.markdownStartMermaid, i)) >= 0) {
+    for (
+      let j = s.indexOf(MermaidPlugin.markdownStartMermaid, i);
+      j >= 0;
+      j = s.indexOf(MermaidPlugin.markdownStartMermaid, i)
+    ) {
       const start = j + MermaidPlugin.markdownStartMermaid.length;
       const end = s.indexOf(MermaidPlugin.markdownEndMermaid, start);
       out += `${s.slice(i, j + 1)}<div class="mermaid">${html.escape(s.slice(start, end))}</div>`;

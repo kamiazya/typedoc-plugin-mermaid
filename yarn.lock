@@ -326,6 +326,11 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
+"@types/html-escaper@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/html-escaper/-/html-escaper-3.0.0.tgz#97d7df443c0fc86e3abdd0971f4814a58e3ca762"
+  integrity sha512-OcJcvP3Yk8mjYwf/IdXZtTE1tb/u0WF0qa29ER07ZHCYUBZXSN29Z1mBS+/96+kNMGTFUAbSz9X+pHmHpZrTCw==
+
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.1.tgz#42995b446db9a48a11a07ec083499a860e9138ff"
@@ -1454,10 +1459,10 @@ html-encoding-sniffer@^1.0.2:
   dependencies:
     whatwg-encoding "^1.0.1"
 
-html-escaper@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/html-escaper/-/html-escaper-2.0.2.tgz#dfd60027da36a36dfcbe236262c00a5822681453"
-  integrity sha512-H2iMtd0I4Mt5eYiapRdIDjp+XzelXQ0tFE4JS7YFwFevXXMmOp9myNrUvCg0D6ws8iqkRPBfKHgbwig1SmlLfg==
+html-escaper@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/html-escaper/-/html-escaper-3.0.0.tgz#e4c85c7b599ea2f56436ca492ba5bab3ed76b3bf"
+  integrity sha512-69CofXDozHqdHDl1BZ3YiFp5rYN1qTwSXIVcBhVcZNkzj1vzx6Sko1nT58mzKip19DbKo8lHR9hf6/XeZ9+s3w==
 
 http-signature@~1.2.0:
   version "1.2.0"

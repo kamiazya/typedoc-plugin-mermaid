@@ -32,4 +32,13 @@ describe('MermaidPlugin', () => {
     expect(result).toEqual('hoge');
     expect(result).toMatchSnapshot();
   });
+
+  it('convert Markdown snippet returns same value if body closing tag not exist', () => {
+    const input = '#### title\n\n```mermaid\ngraph LR\n  <a> --> <b>\n```\n\nmore text';
+    const result = plugin.replaceMarkdownMermaidCodeBlocks(input);
+    expect(result).toMatch('#### title\n');
+    expect(result).toMatch('<div class="mermaid">graph LR\n  &lt;a&gt; --&gt; &lt;b&gt;</div>');
+    expect(result).toMatch('\nmore text');
+    expect(result).toMatchSnapshot();
+  });
 });

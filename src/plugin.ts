@@ -98,16 +98,18 @@ export class MermaidPlugin extends ConverterComponent {
   public initialize() {
     this.listenTo(this.owner, {
       [Converter.EVENT_RESOLVE_BEGIN]: this.onResolveBegin,
-    }).listenTo(this.application.renderer, {
-      [PageEvent.END]: this.onPageEnd,
-    }).listenTo(
-      this.application.renderer,
-      {
-        [MarkdownEvent.PARSE]: this.onParseMarkdown,
-      },
-      undefined,
-      100,
-    );
+    })
+      .listenTo(this.application.renderer, {
+        [PageEvent.END]: this.onPageEnd,
+      })
+      .listenTo(
+        this.application.renderer,
+        {
+          [MarkdownEvent.PARSE]: this.onParseMarkdown,
+        },
+        undefined,
+        100,
+      );
   }
 
   /**

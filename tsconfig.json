@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es2015",
+    "target": "ESNext",
     "experimentalDecorators": true,
     "allowJs": false,
     "noImplicitAny": true,
@@ -9,7 +8,8 @@
     "noImplicitThis": true,
     "alwaysStrict": true,
     "strictNullChecks": true,
-    "outDir": "dist/"
+    "outDir": "dist/",
+    "declaration": false
   },
   "include": [
     "src/*.ts"

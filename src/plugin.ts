@@ -56,9 +56,9 @@ export class MermaidPlugin extends ConverterComponent {
    */
   private static mermaidTags(context: Context): CommentTag[] {
     return Object.values(context.project.reflections) // get reflection from context
-      .map(reflection => reflection.comment) // get Comment from Reflection
+      .map((reflection) => reflection.comment) // get Comment from Reflection
       .filter(this.filterComment) // filter only comment exist
-      .map(comment => comment.tags) // get CommentTags from Comment
+      .map((comment) => comment.tags) // get CommentTags from Comment
       .filter(this.filterCommentTags) // filter only CommentTags exist
       .reduce((a, b) => a.concat(b), []) // merge all CommentTags
       .filter(this.isMermaidCommentTag); // filter tag that paramName is 'mermaid'
@@ -116,7 +116,7 @@ export class MermaidPlugin extends ConverterComponent {
    * Triggered when the converter begins converting a project.
    */
   public onResolveBegin(context: Context): void {
-    MermaidPlugin.mermaidTags(context).forEach(tag => {
+    MermaidPlugin.mermaidTags(context).forEach((tag) => {
       // convert
       tag.text = this.convertCommentTagText(tag.text);
     });

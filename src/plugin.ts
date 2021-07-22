@@ -95,7 +95,7 @@ export class MermaidPlugin extends ConverterComponent {
   /**
    * listen to event on initialization
    */
-  public initialize() {
+  public initialize(): void {
     this.listenTo(this.owner, {
       [Converter.EVENT_RESOLVE_BEGIN]: this.onResolveBegin,
     })
@@ -115,7 +115,7 @@ export class MermaidPlugin extends ConverterComponent {
   /**
    * Triggered when the converter begins converting a project.
    */
-  public onResolveBegin(context: Context) {
+  public onResolveBegin(context: Context): void {
     MermaidPlugin.mermaidTags(context).forEach(tag => {
       // convert
       tag.text = this.convertCommentTagText(tag.text);
@@ -126,18 +126,18 @@ export class MermaidPlugin extends ConverterComponent {
    * Triggered after a document has been rendered, just before it is written to disc.
    * Remove duplicate lines to tidy up output
    */
-  public onPageEnd(page: PageEvent) {
+  public onPageEnd(page: PageEvent): void {
     if (page.contents !== undefined) {
       // convert
       page.contents = this.convertPageContents(page.contents);
     }
   }
 
-  public onParseMarkdown(event: MarkdownEvent) {
+  public onParseMarkdown(event: MarkdownEvent): void {
     event.parsedText = this.replaceMarkdownMermaidCodeBlocks(event.parsedText);
   }
 
-  public replaceMarkdownMermaidCodeBlocks(s: string) {
+  public replaceMarkdownMermaidCodeBlocks(s: string): string {
     let out = '';
     let i = 0;
     for (

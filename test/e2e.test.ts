@@ -5,6 +5,7 @@ const plugin = new MermaidPlugin(DUMMY_APPLICATION_OWNER);
 
 describe('MermaidPlugin e2e', () => {
   it('onBegin not to throw Exception', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const contexts: any[] = [
       {
         project: {
@@ -25,14 +26,13 @@ describe('MermaidPlugin e2e', () => {
       },
       {
         project: {
-          reflections: {
-          },
+          reflections: {},
         },
       },
       {
         project: {
           reflections: {
-            1: { },
+            1: {},
           },
         },
       },
@@ -40,26 +40,20 @@ describe('MermaidPlugin e2e', () => {
         project: {
           reflections: {
             1: {
-              comment: { },
+              comment: {},
             },
           },
         },
       },
     ];
 
-    contexts
-      .forEach(context =>
-        expect(() => plugin.onResolveBegin(context)).not.toThrow());
+    contexts.forEach(context => expect(() => plugin.onResolveBegin(context)).not.toThrow());
   });
 
   it('onPageEnd not to throw Exception', () => {
-    const pageEvents: any[] = [
-      { contents: '' },
-      { },
-    ];
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const pageEvents: any[] = [{ contents: '' }, {}];
 
-    pageEvents
-      .forEach(pageEvent =>
-        expect(() => plugin.onPageEnd(pageEvent)).not.toThrow());
+    pageEvents.forEach(pageEvent => expect(() => plugin.onPageEnd(pageEvent)).not.toThrow());
   });
 });

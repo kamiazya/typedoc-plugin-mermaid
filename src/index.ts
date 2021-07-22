@@ -11,4 +11,4 @@ export function load(PluginHost: Application): void {
    * Add the plugin to the converter instance
    */
   app.converter.addComponent('mermaid', new MermaidPlugin(app.converter));
-};
+}

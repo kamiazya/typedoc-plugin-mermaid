@@ -35,6 +35,15 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "Dynacord",
+      "name": "Mathieu Jalbert-Claveau",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15387304?v=4",
+      "profile": "https://github.com/Dynacord",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,

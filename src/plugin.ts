@@ -56,9 +56,9 @@ export class MermaidPlugin extends ConverterComponent {
    */
   private static mermaidTags(context: Context): CommentTag[] {
     return Object.values(context.project.reflections) // get reflection from context
-      .map(reflection => reflection.comment) // get Comment from Reflection
+      .map((reflection) => reflection.comment) // get Comment from Reflection
       .filter(this.filterComment) // filter only comment exist
-      .map(comment => comment.tags) // get CommentTags from Comment
+      .map((comment) => comment.tags) // get CommentTags from Comment
       .filter(this.filterCommentTags) // filter only CommentTags exist
       .reduce((a, b) => a.concat(b), []) // merge all CommentTags
       .filter(this.isMermaidCommentTag); // filter tag that paramName is 'mermaid'
@@ -95,7 +95,7 @@ export class MermaidPlugin extends ConverterComponent {
   /**
    * listen to event on initialization
    */
-  public initialize() {
+  public initialize(): void {
     this.listenTo(this.owner, {
       [Converter.EVENT_RESOLVE_BEGIN]: this.onResolveBegin,
     })
@@ -115,8 +115,8 @@ export class MermaidPlugin extends ConverterComponent {
   /**
    * Triggered when the converter begins converting a project.
    */
-  public onResolveBegin(context: Context) {
-    MermaidPlugin.mermaidTags(context).forEach(tag => {
+  public onResolveBegin(context: Context): void {
+    MermaidPlugin.mermaidTags(context).forEach((tag) => {
       // convert
       tag.text = this.convertCommentTagText(tag.text);
     });
@@ -126,18 +126,18 @@ export class MermaidPlugin extends ConverterComponent {
    * Triggered after a document has been rendered, just before it is written to disc.
    * Remove duplicate lines to tidy up output
    */
-  public onPageEnd(page: PageEvent) {
+  public onPageEnd(page: PageEvent): void {
     if (page.contents !== undefined) {
       // convert
       page.contents = this.convertPageContents(page.contents);
     }
   }
 
-  public onParseMarkdown(event: MarkdownEvent) {
+  public onParseMarkdown(event: MarkdownEvent): void {
     event.parsedText = this.replaceMarkdownMermaidCodeBlocks(event.parsedText);
   }
 
-  public replaceMarkdownMermaidCodeBlocks(s: string) {
+  public replaceMarkdownMermaidCodeBlocks(s: string): string {
     let out = '';
     let i = 0;
     for (

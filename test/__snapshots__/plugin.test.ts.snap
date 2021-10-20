@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`MermaidPlugin convert CommentTag 1`] = `
-"#### title 
+"#### title
 
- <div class=\\"mermaid\\">graph</div>"
+<div class=\\"mermaid\\">graph</div>"
 `;
 
 exports[`MermaidPlugin convert Markdown snippet returns same value if body closing tag not exist 1`] = `
@@ -13,20 +13,4 @@ exports[`MermaidPlugin convert Markdown snippet returns same value if body closi
   &lt;a&gt; --&gt; &lt;b&gt;</div>
 
 more text"
-`;
-
-exports[`MermaidPlugin convert PageContents returns same value if body closing tag not exist 1`] = `"hoge"`;
-
-exports[`MermaidPlugin convert PageContents returns script tag for mermaid.js, initialize mermaid script, and body closing tag 1`] = `
-"
-    <script
-      src=\\"https://unpkg.com/mermaid/dist/mermaid.min.js\\"
-    ></script>
-    <script>
-    mermaid.initialize({
-      startOnLoad: true,
-    });
-    </script>
-    </body>
-  "
 `;

@@ -1,155 +1,82 @@
 import * as html from 'html-escaper';
-import { Converter } from 'typedoc/dist/lib/converter';
-import { Component, ConverterComponent } from 'typedoc/dist/lib/converter/components';
-import { Context } from 'typedoc/dist/lib/converter/context';
-import { Comment, CommentTag } from 'typedoc/dist/lib/models/comments';
-import { MarkdownEvent, PageEvent } from 'typedoc/dist/lib/output/events';
+import { Converter, Context, PageEvent, Application, ReflectionKind } from 'typedoc';
 
 /**
- * Mermaid plugin component.
+ * 1. Load mermaid.js library.
+ * 2. Initialize mermaid.
  */
-@Component({ name: 'mermaid' })
-export class MermaidPlugin extends ConverterComponent {
-  /**
-   * 1. Load mermaid.js library.
-   * 2. Initialize mermaid.
-   * 3. Close body tag.
-   */
-  private static customScriptsAndBodyClosingTag = `
-    <script
-      src="https://unpkg.com/mermaid/dist/mermaid.min.js"
-    ></script>
-    <script>
-    mermaid.initialize({
-      startOnLoad: true,
+const script =
+  '<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>' +
+  '<script>mermaid.initialize({startOnLoad:true});</script>';
+
+const mermaidBlockStart = '<div class="mermaid">';
+const mermaidBlockEnd = '</div>';
+
+export class MermaidPlugin {
+  public addToApplication(app: Application): void {
+    app.converter.on(Converter.EVENT_RESOLVE_BEGIN, (context: Context) => {
+      this.onConverterResolveBegin(context);
     });
-    </script>
-    </body>
-  `;
 
-  private static markdownStartMermaid = '\n```mermaid\n';
-  private static markdownEndMermaid = '\n```\n';
-
-  /**
-   * filter logic for Comment exist
-   */
-  private static filterComment(comment: undefined | Comment): comment is Comment {
-    return comment !== undefined && !!comment;
-  }
-
-  /**
-   * filter logic for CommentTags exist
-   */
-  private static filterCommentTags(tags: CommentTag[] | undefined): tags is CommentTag[] {
-    return tags !== undefined && !!tags;
-  }
-
-  /**
-   * return turn when tag's paramName is 'mermaid'
-   */
-  private static isMermaidCommentTag(tag: CommentTag): boolean {
-    return tag.tagName === 'mermaid';
-  }
-
-  /**
-   * get CommentTags for using `@mermaid` annotation from Context.
-   */
-  private static mermaidTags(context: Context): CommentTag[] {
-    return Object.values(context.project.reflections) // get reflection from context
-      .map((reflection) => reflection.comment) // get Comment from Reflection
-      .filter(this.filterComment) // filter only comment exist
-      .map((comment) => comment.tags) // get CommentTags from Comment
-      .filter(this.filterCommentTags) // filter only CommentTags exist
-      .reduce((a, b) => a.concat(b), []) // merge all CommentTags
-      .filter(this.isMermaidCommentTag); // filter tag that paramName is 'mermaid'
-  }
-
-  /**
-   * Regex literal that matches body closing tag.
-   */
-  private readonly BODY_CLOSING_TAG = /<\/body>/;
-
-  /**
-   * The first line of text wraps h4.
-   * The other wraps by div classed mermaid.
-   */
-  public convertCommentTagText(tagText: string): string {
-    const texts = tagText.split('\n');
-    // take first line
-    const title = texts.shift();
-    // the other
-    const mermaid = texts.join('\n');
-    return `#### ${title} \n\n <div class="mermaid">${mermaid}</div>`;
-  }
-
-  /**
-   * Insert custom script before closing body tag.
-   */
-  public convertPageContents(contents: string): string {
-    if (this.BODY_CLOSING_TAG.test(contents)) {
-      return contents.replace(this.BODY_CLOSING_TAG, MermaidPlugin.customScriptsAndBodyClosingTag);
-    }
-    return contents;
-  }
-
-  /**
-   * listen to event on initialization
-   */
-  public initialize(): void {
-    this.listenTo(this.owner, {
-      [Converter.EVENT_RESOLVE_BEGIN]: this.onResolveBegin,
-    })
-      .listenTo(this.application.renderer, {
-        [PageEvent.END]: this.onPageEnd,
-      })
-      .listenTo(
-        this.application.renderer,
-        {
-          [MarkdownEvent.PARSE]: this.onParseMarkdown,
-        },
-        undefined,
-        100,
-      );
-  }
-
-  /**
-   * Triggered when the converter begins converting a project.
-   */
-  public onResolveBegin(context: Context): void {
-    MermaidPlugin.mermaidTags(context).forEach((tag) => {
-      // convert
-      tag.text = this.convertCommentTagText(tag.text);
+    app.renderer.on({
+      [PageEvent.END]: (event: PageEvent) => {
+        this.onEndPage(event);
+      },
     });
   }
 
+  private onConverterResolveBegin(context: Context): void {
+    for (const reflection of context.project.getReflectionsByKind(ReflectionKind.All)) {
+      const { comment } = reflection;
+      if (comment) {
+        comment.text = this.handleMermaidCodeBlocks(comment.text);
+        for (const tag of comment.tags) {
+          if (tag.tagName === 'mermaid') {
+            tag.text = this.handleMermaidTag(tag.text);
+          } else {
+            tag.text = this.handleMermaidCodeBlocks(tag.text);
+          }
+        }
+      }
+    }
+  }
   /**
-   * Triggered after a document has been rendered, just before it is written to disc.
-   * Remove duplicate lines to tidy up output
+   * Convert the text of `@mermaid` tags.
+   *
+   * This first line will be the title. It will be wrapped in an h4.
+   * All other lines are mermaid code and will be converted into a mermaid block.
    */
-  public onPageEnd(page: PageEvent): void {
-    if (page.contents !== undefined) {
-      // convert
-      page.contents = this.convertPageContents(page.contents);
-    }
+  public handleMermaidTag(text: string): string {
+    const title = /^.*/.exec(text)?.[0] ?? '';
+    const code = text.slice(title.length);
+
+    return `#### ${title}\n\n${this.toMermaidBlock(code)}`;
+  }
+  /**
+   * Replaces mermaid code blocks in Markdown text with mermaid blocks.
+   */
+  public handleMermaidCodeBlocks(text: string): string {
+    return text.replace(/^```mermaid[ \t\r]*\n([\s\S]*?)^```[ \t]*$/gm, (m, code) => {
+      return this.toMermaidBlock(code);
+    });
+  }
+  /**
+   * Creates a mermaid block for the given mermaid code.
+   */
+  private toMermaidBlock(mermaidCode: string): string {
+    return mermaidBlockStart + html.escape(mermaidCode.trim()) + mermaidBlockEnd;
   }
 
-  public onParseMarkdown(event: MarkdownEvent): void {
-    event.parsedText = this.replaceMarkdownMermaidCodeBlocks(event.parsedText);
-  }
-
-  public replaceMarkdownMermaidCodeBlocks(s: string): string {
-    let out = '';
-    let i = 0;
-    for (
-      let j = s.indexOf(MermaidPlugin.markdownStartMermaid, i);
-      j >= 0;
-      j = s.indexOf(MermaidPlugin.markdownStartMermaid, i)
-    ) {
-      const start = j + MermaidPlugin.markdownStartMermaid.length;
-      const end = s.indexOf(MermaidPlugin.markdownEndMermaid, start);
-      out += `${s.slice(i, j + 1)}<div class="mermaid">${html.escape(s.slice(start, end))}</div>`;
-      i = end + MermaidPlugin.markdownEndMermaid.length - 1;
+  private onEndPage(event: PageEvent): void {
+    if (event.contents === undefined) {
+      return;
     }
-    return out + s.slice(i);
+    if (!event.contents.includes(mermaidBlockStart)) {
+      // this page doesn't need to load mermaid
+    }
+
+    // find the closing </body> tag and insert our mermaid scripts
+    const bodyEndIndex = event.contents.lastIndexOf('</body>');
+    event.contents = event.contents.slice(0, bodyEndIndex) + script + event.contents.slice(bodyEndIndex);
   }
 }

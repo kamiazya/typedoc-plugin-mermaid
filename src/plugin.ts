@@ -6,7 +6,7 @@ import { Converter, Context, PageEvent, Application, ReflectionKind } from 'type
  * 2. Initialize mermaid.
  */
 const script =
-  '<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>' +
+  '<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>' +
   '<script>mermaid.initialize({startOnLoad:true});</script>';
 
 const mermaidBlockStart = '<div class="mermaid">';

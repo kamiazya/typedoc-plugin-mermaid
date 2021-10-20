@@ -68,15 +68,18 @@ export class MermaidPlugin {
   }
 
   private onEndPage(event: PageEvent): void {
-    if (event.contents === undefined) {
-      return;
+    if (event.contents !== undefined) {
+      event.contents = this.insertMermaidScript(event.contents);
     }
-    if (!event.contents.includes(mermaidBlockStart)) {
+  }
+  public insertMermaidScript(html: string): string {
+    if (!html.includes(mermaidBlockStart)) {
       // this page doesn't need to load mermaid
+      return html;
     }
 
     // find the closing </body> tag and insert our mermaid scripts
-    const bodyEndIndex = event.contents.lastIndexOf('</body>');
-    event.contents = event.contents.slice(0, bodyEndIndex) + script + event.contents.slice(bodyEndIndex);
+    const bodyEndIndex = html.lastIndexOf('</body>');
+    return html.slice(0, bodyEndIndex) + script + html.slice(bodyEndIndex);
   }
 }

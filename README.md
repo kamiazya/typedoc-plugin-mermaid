@@ -9,7 +9,7 @@
 [![BCH compliance](https://bettercodehub.com/edge/badge/kamiazya/typedoc-plugin-mermaid?branch=main)](https://bettercodehub.com/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 [![Open in Visual Studio Code](https://open.vscode.dev/badges/open-in-vscode.svg)](https://open.vscode.dev/kamiazya/typedoc-plugin-mermaid)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-4-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-5-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # typedoc-plugin-mermaid
@@ -61,6 +61,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="http://bobkerns.typepad.com"><img src="https://avatars3.githubusercontent.com/u/1154903?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Bob Kerns</b></sub></a><br /><a href="https://github.com/kamiazya/typedoc-plugin-mermaid/issues?q=author%3ABobKerns" title="Bug reports">🐛</a></td>
     <td align="center"><a href="http://forivall.com"><img src="https://avatars1.githubusercontent.com/u/760204?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Emily Marigold Klassen</b></sub></a><br /><a href="https://github.com/kamiazya/typedoc-plugin-mermaid/commits?author=forivall" title="Code">💻</a> <a href="https://github.com/kamiazya/typedoc-plugin-mermaid/commits?author=forivall" title="Tests">⚠️</a></td>
     <td align="center"><a href="https://github.com/Dynacord"><img src="https://avatars.githubusercontent.com/u/15387304?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Mathieu Jalbert-Claveau</b></sub></a><br /><a href="https://github.com/kamiazya/typedoc-plugin-mermaid/issues?q=author%3ADynacord" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://github.com/RunDevelopment"><img src="https://avatars.githubusercontent.com/u/20878432?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michael Schmidt</b></sub></a><br /><a href="https://github.com/kamiazya/typedoc-plugin-mermaid/commits?author=RunDevelopment" title="Code">💻</a> <a href="https://github.com/kamiazya/typedoc-plugin-mermaid/commits?author=RunDevelopment" title="Tests">⚠️</a></td>
   </tr>
 </table>
 

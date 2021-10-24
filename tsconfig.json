@@ -9,7 +9,8 @@
     "alwaysStrict": true,
     "strictNullChecks": true,
     "outDir": "dist/",
-    "declaration": false
+    "declaration": false,
+    "esModuleInterop": true
   },
   "include": [
     "src/*.ts"

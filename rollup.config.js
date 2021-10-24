@@ -16,9 +16,7 @@ const options = {
   ],
   external: [
     'html-escaper',
-    'typedoc/dist/lib/converter',
-    'typedoc/dist/lib/converter/components',
-    'typedoc/dist/lib/output/events',
+    'typedoc',
   ],
 };
 

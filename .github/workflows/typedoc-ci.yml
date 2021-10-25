@@ -11,7 +11,7 @@ jobs:
       matrix:
         typedoc-version:
           - latest
-          - '~0.21.0'
+          - '~0.22.0'
     steps:
       - uses: actions/checkout@v1
       - name: Use Node.js

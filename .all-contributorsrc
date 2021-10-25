@@ -54,6 +54,16 @@
         "code",
         "test"
       ]
+    },
+    {
+      "login": "azatoth",
+      "name": "Carl Fürstenberg",
+      "avatar_url": "https://avatars.githubusercontent.com/u/146477?v=4",
+      "profile": "https://github.com/azatoth",
+      "contributions": [
+        "bug",
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 7,

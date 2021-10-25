@@ -38,4 +38,4 @@ jobs:
           yarn link typedoc-plugin-mermaid
           yarn run typedoc --plugin typedoc-plugin-mermaid \
             --out docs \
-            src
+            src/hello-world.ts

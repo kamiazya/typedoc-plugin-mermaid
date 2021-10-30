@@ -10,10 +10,10 @@ const style = String.raw`
   display: none !important;
 }
 
-.mermaid-block > .mermaid[data-done].dark {
+.mermaid-block > .mermaid[data-inserted].dark {
   display: var(--mermaid-dark-display);
 }
-.mermaid-block > .mermaid[data-done].light {
+.mermaid-block > .mermaid[data-inserted].light {
   display: var(--mermaid-light-display);
 }
 
@@ -63,10 +63,10 @@ const script = String.raw`
 
   requestAnimationFrame(function check() {
     let some = false;
-    document.querySelectorAll("div.mermaid:not([data-done])").forEach(div => {
+    document.querySelectorAll("div.mermaid:not([data-inserted])").forEach(div => {
       some = true;
       if (div.querySelector("svg")) {
-        div.dataset.done = true;
+        div.dataset.inserted = true;
       }
     });
 

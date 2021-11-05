@@ -31,7 +31,7 @@ yarn add -D typedoc-plugin-mermaid
 
 ## Usage
 
-Write tsdoc with `@mermaid` annotation
+Write tsdoc with `@mermaid` annotations:
 
 ```typescript
 /**
@@ -42,6 +42,20 @@ Write tsdoc with `@mermaid` annotation
  *   mermaid.js --> TypeDoc;
  */
 export class Hoge { }
+```
+
+Or use fenced code blocks:
+
+```typescript
+/**
+ * Mermaid code blocks are automatically detect and converted.
+ *
+ * ```mermaid
+ * graph TB
+ *   mermaid.js --> TypeDoc;
+ * ```
+ */
+export class Mermaid { }
 ```
 
 [↓↓ DEMO ↓↓](https://kamiazya.github.io/typedoc-plugin-samples/classes/hoge.html)

@@ -1,15 +1,84 @@
 import * as html from 'html-escaper';
 import { Converter, Context, PageEvent, Application, ReflectionKind } from 'typedoc';
 
+const style = String.raw`
+<style>
+:root.mermaid-enabled .mermaid-block > pre {
+  display: none;
+}
+:root:not(.mermaid-enabled) .mermaid-block > .mermaid {
+  display: none !important;
+}
+
+.mermaid-block > .mermaid[data-inserted].dark {
+  display: var(--mermaid-dark-display);
+}
+.mermaid-block > .mermaid[data-inserted].light {
+  display: var(--mermaid-light-display);
+}
+
+:root {
+  --mermaid-dark-display: none;
+  --mermaid-light-display: block;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --mermaid-dark-display: none;
+    --mermaid-light-display: block;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --mermaid-dark-display: block;
+    --mermaid-light-display: none;
+  }
+}
+body.light, :root[data-theme="light"] {
+  --mermaid-dark-display: none;
+  --mermaid-light-display: block;
+}
+body.dark, :root[data-theme="dark"] {
+  --mermaid-dark-display: block;
+  --mermaid-light-display: none;
+}
+</style>
+`;
+
 /**
  * 1. Load mermaid.js library.
  * 2. Initialize mermaid.
+ * 3. Add special attribute after SVG has been inserted.
  */
-const script =
-  '<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>' +
-  '<script>mermaid.initialize({startOnLoad:true});</script>';
+const script = String.raw`
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+<script>
+(function() {
+  if (typeof mermaid === "undefined") {
+    return;
+  }
 
-const mermaidBlockStart = '<div class="mermaid">';
+  document.documentElement.classList.add("mermaid-enabled");
+
+  mermaid.initialize({startOnLoad:true});
+
+  requestAnimationFrame(function check() {
+    let some = false;
+    document.querySelectorAll("div.mermaid:not([data-inserted])").forEach(div => {
+      some = true;
+      if (div.querySelector("svg")) {
+        div.dataset.inserted = true;
+      }
+    });
+
+    if (some) {
+      requestAnimationFrame(check);
+    }
+  });
+})();
+</script>
+`;
+
+const mermaidBlockStart = '<div class="mermaid-block">';
 const mermaidBlockEnd = '</div>';
 
 export class MermaidPlugin {
@@ -64,7 +133,13 @@ export class MermaidPlugin {
    * Creates a mermaid block for the given mermaid code.
    */
   private toMermaidBlock(mermaidCode: string): string {
-    return mermaidBlockStart + html.escape(mermaidCode.trim()) + mermaidBlockEnd;
+    const htmlCode = html.escape(mermaidCode.trim());
+
+    const dark = `<div class="mermaid dark">%%{init:{"theme":"dark"}}%%\n${htmlCode}</div>`;
+    const light = `<div class="mermaid light">%%{init:{"theme":"default"}}%%\n${htmlCode}</div>`;
+    const pre = `<pre><code class="language-mermaid">${htmlCode}</code></pre>`;
+
+    return mermaidBlockStart + dark + light + pre + mermaidBlockEnd;
   }
 
   private onEndPage(event: PageEvent): void {
@@ -77,6 +152,10 @@ export class MermaidPlugin {
       // this page doesn't need to load mermaid
       return html;
     }
+
+    // find the closing </body> tag and insert our mermaid scripts
+    const headEndIndex = html.indexOf('</head>');
+    html = html.slice(0, headEndIndex) + style + html.slice(headEndIndex);
 
     // find the closing </body> tag and insert our mermaid scripts
     const bodyEndIndex = html.lastIndexOf('</body>');

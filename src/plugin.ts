@@ -1,5 +1,5 @@
 import * as html from 'html-escaper';
-import typedoc, { Converter, Context, PageEvent, Application, ReflectionKind, MarkdownEvent } from 'typedoc';
+import { Converter, Context, PageEvent, Application, ReflectionKind, MarkdownEvent } from 'typedoc';
 
 const style = String.raw`
 <style>

@@ -1,5 +1,5 @@
 import * as html from 'html-escaper';
-import { Converter, Context, PageEvent, Application, ReflectionKind } from 'typedoc';
+import typedoc, { Converter, Context, PageEvent, Application, ReflectionKind, MarkdownEvent } from 'typedoc';
 
 const style = String.raw`
 <style>
@@ -92,6 +92,16 @@ export class MermaidPlugin {
         this.onEndPage(event);
       },
     });
+
+    // high priority markdown parser to catch blocks before the built-in parser
+    app.renderer.on(
+      MarkdownEvent.PARSE,
+      (event: MarkdownEvent) => {
+        this.onParseMarkdown(event);
+      },
+      this,
+      1000,
+    );
   }
 
   private onConverterResolveBegin(context: Context): void {
@@ -147,6 +157,11 @@ export class MermaidPlugin {
       event.contents = this.insertMermaidScript(event.contents);
     }
   }
+
+  public onParseMarkdown(event: MarkdownEvent): void {
+    event.parsedText = this.handleMermaidCodeBlocks(event.parsedText);
+  }
+
   public insertMermaidScript(html: string): string {
     if (!html.includes(mermaidBlockStart)) {
       // this page doesn't need to load mermaid

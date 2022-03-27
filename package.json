@@ -32,7 +32,8 @@
     "format": "eslint -c .eslintrc.json --ext ts src --fix && prettier --write './**/*.ts'",
     "lint": "eslint -c .eslintrc.json --ext ts src && prettier --check './**/*.ts'",
     "build": "rollup -c && prettier --write ./dist/*",
-    "test": "jest"
+    "test": "jest",
+    "example": "cd example && yarn typedoc"
   },
   "dependencies": {
     "html-escaper": "^3.0.0"

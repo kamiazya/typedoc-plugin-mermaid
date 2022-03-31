@@ -1,0 +1,8 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "typedoc": "^0.22.13"
+  }
+}

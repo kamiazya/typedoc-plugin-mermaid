@@ -1,3 +1,5 @@
+export { Foo } from './foo';
+
 /**
  * Example
  *

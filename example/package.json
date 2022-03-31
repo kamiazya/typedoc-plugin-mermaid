@@ -2,6 +2,9 @@
   "name": "example",
   "version": "1.0.0",
   "dependencies": {},
+  "scripts": {
+    "doc": "typedoc --includes src"
+  },
   "devDependencies": {
     "typedoc": "^0.22.13"
   }

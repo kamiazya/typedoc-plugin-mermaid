@@ -65,6 +65,17 @@
         "bug",
         "infra"
       ]
+    },
+    {
+      "login": "WHenderson",
+      "name": "Will Henderson",
+      "avatar_url": "https://avatars.githubusercontent.com/u/934094?v=4",
+      "profile": "https://github.com/WHenderson",
+      "contributions": [
+        "code",
+        "bug",
+        "example"
+      ]
     }
   ],
   "contributorsPerLine": 7,

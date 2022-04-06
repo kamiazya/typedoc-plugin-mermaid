@@ -7,7 +7,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![BCH compliance](https://bettercodehub.com/edge/badge/kamiazya/typedoc-plugin-mermaid?branch=main)](https://bettercodehub.com/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # typedoc-plugin-mermaid
@@ -76,6 +76,9 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
     <td align="center"><a href="https://github.com/RunDevelopment"><img src="https://avatars.githubusercontent.com/u/20878432?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Michael Schmidt</b></sub></a><br /><a href="https://github.com/kamiazya/typedoc-plugin-mermaid/commits?author=RunDevelopment" title="Code">💻</a> <a href="https://github.com/kamiazya/typedoc-plugin-mermaid/commits?author=RunDevelopment" title="Tests">⚠️</a> <a href="https://github.com/kamiazya/typedoc-plugin-mermaid/commits?author=RunDevelopment" title="Documentation">📖</a></td>
     <td align="center"><a href="https://github.com/azatoth"><img src="https://avatars.githubusercontent.com/u/146477?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Carl Fürstenberg</b></sub></a><br /><a href="https://github.com/kamiazya/typedoc-plugin-mermaid/issues?q=author%3Aazatoth" title="Bug reports">🐛</a> <a href="#infra-azatoth" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
     <td align="center"><a href="https://github.com/WHenderson"><img src="https://avatars.githubusercontent.com/u/934094?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Will Henderson</b></sub></a><br /><a href="https://github.com/kamiazya/typedoc-plugin-mermaid/commits?author=WHenderson" title="Code">💻</a> <a href="https://github.com/kamiazya/typedoc-plugin-mermaid/issues?q=author%3AWHenderson" title="Bug reports">🐛</a> <a href="#example-WHenderson" title="Examples">💡</a></td>
+  </tr>
+  <tr>
+    <td align="center"><a href="https://github.com/guryanovev"><img src="https://avatars.githubusercontent.com/u/2764795?v=4?s=100" width="100px;" alt=""/><br /><sub><b>guryanovev</b></sub></a><br /><a href="https://github.com/kamiazya/typedoc-plugin-mermaid/issues?q=author%3Aguryanovev" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 

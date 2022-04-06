@@ -1,5 +1,5 @@
 import * as html from 'html-escaper';
-import { Converter, Context, PageEvent, Application, ReflectionKind, MarkdownEvent } from 'typedoc';
+import { Converter, Context, PageEvent, Application, ReflectionKind, MarkdownEvent, ParameterType } from 'typedoc';
 
 const style = String.raw`
 <style>
@@ -49,8 +49,9 @@ body.dark, :root[data-theme="dark"] {
  * 2. Initialize mermaid.
  * 3. Add special attribute after SVG has been inserted.
  */
-const script = String.raw`
-<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+function createScript(version: string): string {
+  return String.raw`
+<script src="https://unpkg.com/mermaid@${version}/dist/mermaid.min.js"></script>
 <script>
 (function() {
   if (typeof mermaid === "undefined") {
@@ -77,24 +78,34 @@ const script = String.raw`
 })();
 </script>
 `;
+}
 
 const mermaidBlockStart = '<div class="mermaid-block">';
 const mermaidBlockEnd = '</div>';
 
 export class MermaidPlugin {
-  public addToApplication(app: Application): void {
-    app.converter.on(Converter.EVENT_RESOLVE_BEGIN, (context: Context) => {
+  constructor(private app: Application) {}
+
+  public initialize(): void {
+    this.app.options.addDeclaration({
+      help: '[Mermaid Plugin] The version of mermaid.js to use.',
+      name: 'mermaidVersion',
+      type: ParameterType.String,
+      defaultValue: 'latest',
+    });
+
+    this.app.converter.on(Converter.EVENT_RESOLVE_BEGIN, (context: Context) => {
       this.onConverterResolveBegin(context);
     });
 
-    app.renderer.on({
+    this.app.renderer.on({
       [PageEvent.END]: (event: PageEvent) => {
         this.onEndPage(event);
       },
     });
 
     // high priority markdown parser to catch blocks before the built-in parser
-    app.renderer.on(
+    this.app.renderer.on(
       MarkdownEvent.PARSE,
       (event: MarkdownEvent) => {
         this.onParseMarkdown(event);
@@ -174,6 +185,10 @@ export class MermaidPlugin {
 
     // find the closing </body> tag and insert our mermaid scripts
     const bodyEndIndex = html.lastIndexOf('</body>');
-    return html.slice(0, bodyEndIndex) + script + html.slice(bodyEndIndex);
+    return (
+      html.slice(0, bodyEndIndex) +
+      createScript(this.app.options.getValue('mermaidVersion') as string) +
+      html.slice(bodyEndIndex)
+    );
   }
 }

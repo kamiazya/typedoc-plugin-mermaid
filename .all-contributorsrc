@@ -85,6 +85,15 @@
       "contributions": [
         "bug"
       ]
+    },
+    {
+      "login": "thegiantbeast",
+      "name": "Ricardo Ferreira",
+      "avatar_url": "https://avatars.githubusercontent.com/u/31733?v=4",
+      "profile": "https://thegiantbeast.tech",
+      "contributions": [
+        "ideas"
+      ]
     }
   ],
   "contributorsPerLine": 7,

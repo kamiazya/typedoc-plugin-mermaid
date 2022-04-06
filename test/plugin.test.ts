@@ -1,7 +1,10 @@
+import { Application } from 'typedoc';
 import { MermaidPlugin } from '../src/plugin';
 
 describe('MermaidPlugin', () => {
-  const plugin = new MermaidPlugin();
+  const app = new Application();
+  const plugin = new MermaidPlugin(app);
+  plugin.initialize();
 
   it('convert CommentTag', () => {
     const input = 'title\ngraph';
@@ -16,7 +19,7 @@ describe('MermaidPlugin', () => {
     const result = plugin.insertMermaidScript(input);
     expect(result).toMatch('</body>');
     expect(result).toMatch('mermaid.initialize({');
-    expect(result).toMatch(/src="https:\/\/unpkg.com\/mermaid\/dist\/mermaid.min.js"/);
+    expect(result).toMatch(/src="https:\/\/unpkg.com\/mermaid\@latest\/dist\/mermaid.min.js"/);
     expect(result).toMatchSnapshot();
   });
 

@@ -60,6 +60,24 @@ export class Mermaid { }
 
 [![Example](./media/example.png)](https://kamiazya.github.io/typedoc-plugin-samples/classes/hoge.html)
 
+### Arguments
+
+The following arguments can be used in addition to the default TypeDoc arguments.
+
+```bash
+$ typedoc --help
+...
+Options:
+ --mermaidVersion            [Mermaid Plugin] The version of mermaid.js to use.
+...
+```
+
+- `--mermaidVersion`
+
+    Specify mermaid.js version to use.
+
+    Default: `latest`, Example: `8.14.0`
+
 ## Contributors
 
 Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):

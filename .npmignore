@@ -1,6 +1,8 @@
 .all-contributorsrc
 .bettercodehub.yml
 .editorconfig
+.eslintignore
+.eslintrc.json
 .github
 .gitignore
 .prettierignore
@@ -8,8 +10,10 @@
 .vscode
 CODE_OF_CONDUCT.md
 config
-jest.config.js
+CONTRIBUTING.md
+jest.config.json
+rollup.config.ts
 src
 test
 tsconfig.json
-tslint.json
+yarn.lock

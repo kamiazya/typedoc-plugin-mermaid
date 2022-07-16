@@ -1,7 +1,7 @@
+import { RollupOptions } from 'rollup';
 import typescript from 'rollup-plugin-typescript2';
 
-/** @type {import('rollup').RollupOptions} */
-const options = {
+const options: RollupOptions = {
   input: './src/index.ts',
   plugins: [typescript()],
   output: [
@@ -14,10 +14,7 @@ const options = {
       file: './dist/index.mjs',
     },
   ],
-  external: [
-    'html-escaper',
-    'typedoc',
-  ],
+  external: ['html-escaper', 'typedoc'],
 };
 
 export default options;

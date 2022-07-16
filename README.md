@@ -7,7 +7,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![BCH compliance](https://bettercodehub.com/edge/badge/kamiazya/typedoc-plugin-mermaid?branch=main)](https://bettercodehub.com/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-9-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-10-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 # typedoc-plugin-mermaid
@@ -98,6 +98,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/guryanovev"><img src="https://avatars.githubusercontent.com/u/2764795?v=4?s=100" width="100px;" alt=""/><br /><sub><b>guryanovev</b></sub></a><br /><a href="https://github.com/kamiazya/typedoc-plugin-mermaid/issues?q=author%3Aguryanovev" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://thegiantbeast.tech"><img src="https://avatars.githubusercontent.com/u/31733?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ricardo Ferreira</b></sub></a><br /><a href="#ideas-thegiantbeast" title="Ideas, Planning, & Feedback">🤔</a></td>
+    <td align="center"><a href="https://www.manufacanalytics.com/"><img src="https://avatars.githubusercontent.com/u/25290212?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Maneet Goyal</b></sub></a><br /><a href="https://github.com/kamiazya/typedoc-plugin-mermaid/issues?q=author%3Amaneetgoyal" title="Bug reports">🐛</a></td>
   </tr>
 </table>
 

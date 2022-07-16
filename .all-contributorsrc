@@ -103,6 +103,15 @@
       "contributions": [
         "ideas"
       ]
+    },
+    {
+      "login": "juergenzimmermann",
+      "name": "Juergen Zimmermann",
+      "avatar_url": "https://avatars.githubusercontent.com/u/734334?v=4",
+      "profile": "http://www.hka.de",
+      "contributions": [
+        "bug"
+      ]
     }
   ],
   "contributorsPerLine": 7,

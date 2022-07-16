@@ -119,14 +119,18 @@ export class MermaidPlugin {
     for (const reflection of context.project.getReflectionsByKind(ReflectionKind.All)) {
       const { comment } = reflection;
       if (comment) {
-        comment.text = this.handleMermaidCodeBlocks(comment.text);
-        for (const tag of comment.tags) {
-          if (tag.tagName === 'mermaid') {
-            tag.text = this.handleMermaidTag(tag.text);
-          } else {
-            tag.text = this.handleMermaidCodeBlocks(tag.text);
+        comment.summary
+          .filter((part) => part.kind === 'code')
+          .forEach((part) => {
+            part.text = this.handleMermaidCodeBlocks(part.text);
+          });
+
+        comment.getTags('@mermaid').forEach((part) => {
+          const p = part.content[0];
+          if (p?.text) {
+            p.text = this.handleMermaidTag(p.text);
           }
-        }
+        });
       }
     }
   }

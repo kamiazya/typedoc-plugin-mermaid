@@ -39,7 +39,7 @@
     "html-escaper": "^3.0.0"
   },
   "peerDependencies": {
-    "typedoc": ">=0.22.0"
+    "typedoc": ">=0.23.0"
   },
   "devDependencies": {
     "@types/html-escaper": "^3.0.0",
@@ -57,7 +57,7 @@
     "rollup": "^2.53.3",
     "rollup-plugin-typescript2": "^0.31.2",
     "ts-jest": "^27.0.4",
-    "typedoc": "^0.22.6",
+    "typedoc": "^0.23.7",
     "typescript": "^4.3.5"
   }
 }

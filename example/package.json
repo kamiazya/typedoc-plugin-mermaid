@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "dependencies": {},
   "scripts": {
-    "doc": "typedoc --includes src"
+    "doc": "typedoc"
   },
   "devDependencies": {
-    "typedoc": "^0.22.13"
+    "typedoc": "^0.23.7"
   }
 }

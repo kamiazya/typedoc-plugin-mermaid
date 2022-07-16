@@ -31,7 +31,7 @@
   "scripts": {
     "format": "eslint -c .eslintrc.json --ext ts src --fix && prettier --write './**/*.ts'",
     "lint": "eslint -c .eslintrc.json --ext ts src && prettier --check './**/*.ts'",
-    "build": "rollup -c && prettier --write ./dist/*",
+    "build": "rollup --config rollup.config.ts --configPlugin rollup-plugin-typescript2 && prettier --write ./dist/*",
     "test": "jest",
     "example": "yarn --cwd example"
   },

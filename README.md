@@ -98,7 +98,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
   <tr>
     <td align="center"><a href="https://github.com/guryanovev"><img src="https://avatars.githubusercontent.com/u/2764795?v=4?s=100" width="100px;" alt=""/><br /><sub><b>guryanovev</b></sub></a><br /><a href="https://github.com/kamiazya/typedoc-plugin-mermaid/issues?q=author%3Aguryanovev" title="Bug reports">🐛</a></td>
     <td align="center"><a href="https://thegiantbeast.tech"><img src="https://avatars.githubusercontent.com/u/31733?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Ricardo Ferreira</b></sub></a><br /><a href="#ideas-thegiantbeast" title="Ideas, Planning, & Feedback">🤔</a></td>
-    <td align="center"><a href="https://www.manufacanalytics.com/"><img src="https://avatars.githubusercontent.com/u/25290212?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Maneet Goyal</b></sub></a><br /><a href="https://github.com/kamiazya/typedoc-plugin-mermaid/issues?q=author%3Amaneetgoyal" title="Bug reports">🐛</a></td>
+    <td align="center"><a href="https://www.manufacanalytics.com/"><img src="https://avatars.githubusercontent.com/u/25290212?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Maneet Goyal</b></sub></a><br /><a href="#ideas-maneetgoyal" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 

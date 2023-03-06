@@ -66,31 +66,26 @@ body.dark, :root[data-theme=\\"dark\\"] {
 }
 </style>
 </head><body><div class=\\"mermaid-block\\"></div>
-<script src=\\"https://unpkg.com/mermaid@latest/dist/mermaid.min.js\\"></script>
-<script>
-(function() {
-  if (typeof mermaid === \\"undefined\\") {
-    return;
-  }
+<script type=\\"module\\">
+import mermaid from \\"https://unpkg.com/mermaid@latest/dist/mermaid.esm.min.mjs\\";
 
-  document.documentElement.classList.add(\\"mermaid-enabled\\");
+document.documentElement.classList.add(\\"mermaid-enabled\\");
 
-  mermaid.initialize({startOnLoad:true});
+mermaid.initialize({startOnLoad:true});
 
-  requestAnimationFrame(function check() {
-    let some = false;
-    document.querySelectorAll(\\"div.mermaid:not([data-inserted])\\").forEach(div => {
-      some = true;
-      if (div.querySelector(\\"svg\\")) {
-        div.dataset.inserted = true;
-      }
-    });
-
-    if (some) {
-      requestAnimationFrame(check);
+requestAnimationFrame(function check() {
+  let some = false;
+  document.querySelectorAll(\\"div.mermaid:not([data-inserted])\\").forEach(div => {
+    some = true;
+    if (div.querySelector(\\"svg\\")) {
+      div.dataset.inserted = true;
     }
   });
-})();
+
+  if (some) {
+    requestAnimationFrame(check);
+  }
+});
 </script>
 </body>"
 `;

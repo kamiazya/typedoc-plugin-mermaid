@@ -19,7 +19,7 @@ describe('MermaidPlugin', () => {
     const result = plugin.insertMermaidScript(input);
     expect(result).toMatch('</body>');
     expect(result).toMatch('mermaid.initialize({');
-    expect(result).toMatch(/src="https:\/\/unpkg.com\/mermaid\@latest\/dist\/mermaid.min.js"/);
+    expect(result).toMatch(/import mermaid from "https:\/\/unpkg.com\/mermaid\@latest\/dist\/mermaid.esm.min.mjs";/);
     expect(result).toMatchSnapshot();
   });
 

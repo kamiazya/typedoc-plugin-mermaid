@@ -23,7 +23,8 @@
       "avatar_url": "https://avatars3.githubusercontent.com/u/1154903?v=4",
       "profile": "http://bobkerns.typepad.com",
       "contributions": [
-        "bug"
+        "bug",
+        "code"
       ]
     },
     {
@@ -119,5 +120,6 @@
   "projectOwner": "kamiazya",
   "repoType": "github",
   "repoHost": "https://github.com",
-  "skipCi": true
+  "skipCi": true,
+  "commitConvention": "angular"
 }

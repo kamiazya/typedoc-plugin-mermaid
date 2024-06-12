@@ -5,8 +5,11 @@
   "main": "./dist/typedoc-plugin-mermaid.js",
   "module": "./dist/typedoc-plugin-mermaid.mjs",
   "exports": {
-    "import": "./dist/typedoc-plugin-mermaid.mjs",
-    "require": "./dist/typedoc-plugin-mermaid.js"
+    ".": {
+      "import": "./dist/typedoc-plugin-mermaid.mjs",
+      "require": "./dist/typedoc-plugin-mermaid.js"
+    },
+    "./package.json": "./package.json"
   },
   "repository": {
     "type": "git",

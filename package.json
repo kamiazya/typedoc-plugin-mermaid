@@ -36,6 +36,7 @@
   "scripts": {
     "format": "biome check --write .",
     "lint": "biome ci .",
+    "typecheck": "tsc --noEmit",
     "build": "vite build",
     "test": "vitest"
   },

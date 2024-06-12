@@ -1,4 +1,94 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MermaidPlugin > convert CommentTag 1`] = `
+"#### title
+
+<div class="mermaid-block"><div class="mermaid dark">%%{init:{"theme":"dark"}}%%
+graph</div><div class="mermaid light">%%{init:{"theme":"default"}}%%
+graph</div><pre><code class="language-mermaid">graph</code></pre></div>"
+`;
+
+exports[`MermaidPlugin > convert Markdown snippet returns same value if body closing tag not exist 1`] = `
+"#### title
+
+<div class="mermaid-block"><div class="mermaid dark">%%{init:{"theme":"dark"}}%%
+graph LR
+  &lt;a&gt; --&gt; &lt;b&gt;</div><div class="mermaid light">%%{init:{"theme":"default"}}%%
+graph LR
+  &lt;a&gt; --&gt; &lt;b&gt;</div><pre><code class="language-mermaid">graph LR
+  &lt;a&gt; --&gt; &lt;b&gt;</code></pre></div>
+
+more text"
+`;
+
+exports[`MermaidPlugin > convert PageContents returns same value if body closing tag not exist 1`] = `"hoge"`;
+
+exports[`MermaidPlugin > convert PageContents returns script tag for mermaid.js, initialize mermaid script, and body closing tag 1`] = `
+"<head>
+<style>
+:root.mermaid-enabled .mermaid-block > pre {
+  display: none;
+}
+:root:not(.mermaid-enabled) .mermaid-block > .mermaid {
+  display: none !important;
+}
+
+.mermaid-block > .mermaid[data-inserted].dark {
+  display: var(--mermaid-dark-display);
+}
+.mermaid-block > .mermaid[data-inserted].light {
+  display: var(--mermaid-light-display);
+}
+
+:root {
+  --mermaid-dark-display: none;
+  --mermaid-light-display: block;
+}
+@media (prefers-color-scheme: light) {
+  :root {
+    --mermaid-dark-display: none;
+    --mermaid-light-display: block;
+  }
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --mermaid-dark-display: block;
+    --mermaid-light-display: none;
+  }
+}
+body.light, :root[data-theme="light"] {
+  --mermaid-dark-display: none;
+  --mermaid-light-display: block;
+}
+body.dark, :root[data-theme="dark"] {
+  --mermaid-dark-display: block;
+  --mermaid-light-display: none;
+}
+</style>
+</head><body><div class="mermaid-block"></div>
+<script type="module">
+import mermaid from "https://unpkg.com/mermaid@latest/dist/mermaid.esm.min.mjs";
+
+document.documentElement.classList.add("mermaid-enabled");
+
+mermaid.initialize({startOnLoad:true});
+
+requestAnimationFrame(function check() {
+  let some = false;
+  document.querySelectorAll("div.mermaid:not([data-inserted])").forEach(div => {
+    some = true;
+    if (div.querySelector("svg")) {
+      div.dataset.inserted = true;
+    }
+  });
+
+  if (some) {
+    requestAnimationFrame(check);
+  }
+});
+</script>
+</body>"
+`;
 
 exports[`MermaidPlugin convert CommentTag 1`] = `
 "#### title

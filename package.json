@@ -2,10 +2,10 @@
   "name": "typedoc-plugin-mermaid",
   "version": "1.10.0",
   "description": "A plugin for TypeDoc that generates graphs for mermaid.js diagrams by using @mermaid annotation.",
-  "main": "./dist/index.js",
+  "main": "./dist/typedoc-plugin-mermaid.js",
   "exports": {
-    "import": "./dist/index.mjs",
-    "require": "./dist/index.js"
+    "import": "./dist/typedoc-plugin-mermaid.mjs",
+    "require": "./dist/typedoc-plugin-mermaid.js"
   },
   "repository": {
     "type": "git",
@@ -21,13 +21,19 @@
   },
   "author": "kamiazya <yuki@kamiazya.tech>",
   "license": "MIT",
-  "keywords": ["typedoc", "typedocplugin", "mermaid", "graph", "diagram"],
+  "keywords": [
+    "typedoc",
+    "typedocplugin",
+    "mermaid",
+    "graph",
+    "diagram"
+  ],
   "packageManager": "pnpm@9.3.0",
   "scripts": {
     "format": "biome check --write .",
     "lint": "biome ci .",
-    "build": "rollup --config rollup.config.ts --configPlugin rollup-plugin-typescript2 && prettier --write ./dist/*",
-    "test": "jest",
+    "build": "vite build",
+    "test": "vitest",
     "example": "yarn --cwd example"
   },
   "dependencies": {
@@ -41,13 +47,10 @@
     "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.5",
     "@types/html-escaper": "^3.0.0",
-    "@types/jest": "^27.0.2",
     "@types/node": "^18.0.4",
-    "jest": "^27.0.6",
-    "rollup": "^2.53.3",
-    "rollup-plugin-typescript2": "^0.32.1",
-    "ts-jest": "^27.0.4",
     "typedoc": "^0.23.7",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "vite": "^5.2.13",
+    "vitest": "^1.6.0"
   }
 }

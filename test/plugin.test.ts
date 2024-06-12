@@ -1,5 +1,6 @@
 import { Application } from 'typedoc';
-import { MermaidPlugin } from '../src/plugin';
+import { describe, expect, it } from 'vitest';
+import { MermaidPlugin } from '../src/plugin.js';
 
 describe('MermaidPlugin', () => {
   const app = new Application();

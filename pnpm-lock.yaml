@@ -40,6 +40,12 @@ importers:
         specifier: ^1.6.0
         version: 1.6.0(@types/node@18.0.4)(jsdom@16.7.0)
 
+  example:
+    devDependencies:
+      typedoc:
+        specifier: ^0.23.7
+        version: 0.23.7(typescript@4.7.4)
+
 packages:
 
   '@babel/code-frame@7.16.7':

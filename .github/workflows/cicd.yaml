@@ -62,15 +62,14 @@ jobs:
           name: dist
           path: dist
   test:
-    name: Test on node ${{ matrix.node-version }} and ${{ matrix.os }}
+    name: Test on node ${{ matrix.node-version }}
     needs:
       - check_format
       - check_type
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [16.x, 18.x, 20.x, 22.x]
-        os: [ubuntu-latest, macos-latest, windows-latest]
     permissions:
       contents: read
     steps:

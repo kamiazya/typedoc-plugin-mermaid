@@ -3,6 +3,7 @@
   "version": "1.10.0",
   "description": "A plugin for TypeDoc that generates graphs for mermaid.js diagrams by using @mermaid annotation.",
   "main": "./dist/typedoc-plugin-mermaid.js",
+  "module": "./dist/typedoc-plugin-mermaid.mjs",
   "exports": {
     "import": "./dist/typedoc-plugin-mermaid.mjs",
     "require": "./dist/typedoc-plugin-mermaid.js"
@@ -33,23 +34,22 @@
     "format": "biome check --write .",
     "lint": "biome ci .",
     "build": "vite build",
-    "test": "vitest",
-    "example": "yarn --cwd example"
+    "test": "vitest"
   },
   "dependencies": {
-    "html-escaper": "^3.0.0"
+    "html-escaper": "^3.0.3"
   },
   "peerDependencies": {
-    "typedoc": ">=0.23.0"
+    "typedoc": ">=0.23.0 || 0.24.x || 0.25.x"
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.1",
     "@changesets/changelog-github": "^0.5.0",
     "@changesets/cli": "^2.27.5",
     "@types/html-escaper": "^3.0.0",
-    "@types/node": "^18.0.4",
-    "typedoc": "^0.23.7",
-    "typescript": "^4.3.5",
+    "@types/node": "^20.14.2",
+    "typedoc": "^0.25.13",
+    "typescript": "^5.4.5",
     "vite": "^5.2.13",
     "vitest": "^1.6.0"
   }

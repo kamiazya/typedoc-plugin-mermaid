@@ -1,11 +1,12 @@
 {
   "name": "example",
   "version": "1.0.0",
-  "dependencies": {},
+  "private": true,
   "scripts": {
     "doc": "typedoc"
   },
   "devDependencies": {
-    "typedoc": "^0.23.7"
+    "typedoc": "^0.25.13",
+    "typedoc-plugin-mermaid": "workspace:*"
   }
 }

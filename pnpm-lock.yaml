@@ -46,7 +46,7 @@ importers:
         specifier: ^0.25.13
         version: 0.25.13(typescript@5.4.5)
       typedoc-plugin-mermaid:
-        specifier: workspace:^
+        specifier: workspace:*
         version: link:..
 
 packages:

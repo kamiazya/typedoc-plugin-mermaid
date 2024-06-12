@@ -1,0 +1,117 @@
+name: CI/CD
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check_format:
+    name: Check format
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Check format
+        run: pnpm lint
+        env:
+          CI: true
+
+  check_type:
+    name: Check type
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Check type
+        run: pnpm typecheck
+        env:
+          CI: true
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    needs:
+      - check_format
+      - check_type
+    steps:
+      - name: Checkout
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Build
+        run: pnpm build
+        env:
+          CI: true
+      - uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4.3.3
+        with:
+          name: dist
+          path: dist
+  test:
+    name: Test on node ${{ matrix.node-version }}
+    needs:
+      - check_format
+      - check_type
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x, 18.x, 20.x, 22.x]
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Test
+        run: pnpm test
+        env:
+          CI: true
+
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    needs:
+      - build
+      - test
+    # if repository is github.com/kamiazya/typedoc-plugin-mermaid
+    # and branch is main
+    # and before job is successful
+    # then run this job
+    if: ${{ github.repository == 'kamiazya/typedoc-plugin-mermaid' && github.ref == 'refs/heads/main' && github.event_name == 'push' && needs.build.result == 'success' && needs.test.result == 'success' }}
+    permissions:
+      contents: write # Used to commit to "Version Packages" PR
+      pull-requests: write # Used to create "Version Packages" PR
+      id-token: write # Used to publish to npm with provenance statements
+      # Other permissions are defaulted to none
+    steps:
+      - name: Checkout
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@aba318e9165b45b7948c60273e0b72fce0a64eb9 # v1.4.7
+        with:
+          publish: pnpm exec changeset publish
+          version: pnpm exec changeset version
+          createGithubReleases: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+    outputs:
+      published: ${{ steps.changesets.outputs.published }}

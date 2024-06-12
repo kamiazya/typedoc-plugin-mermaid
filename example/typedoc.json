@@ -1,7 +1,5 @@
 {
-  "entryPoints": "src/index.ts",
-  "plugin": [
-    ".."
-  ],
+  "entryPoints": ["./src/index.ts"],
+  "plugin": ["./node_modules/typedoc-plugin-mermaid"],
   "out": "docs"
 }

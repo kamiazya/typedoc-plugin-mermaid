@@ -1,10 +1,14 @@
 import { Application } from 'typedoc';
-import { MermaidPlugin } from '../src/plugin';
+import { beforeAll, describe, expect, it } from 'vitest';
+import { MermaidPlugin } from '../src/plugin.js';
 
 describe('MermaidPlugin', () => {
-  const app = new Application();
-  const plugin = new MermaidPlugin(app);
-  plugin.initialize();
+  let plugin: MermaidPlugin;
+  beforeAll(async () => {
+    const app = await Application.bootstrap();
+    plugin = new MermaidPlugin(app);
+    plugin.initialize();
+  });
 
   it('convert CommentTag', () => {
     const input = 'title\ngraph';

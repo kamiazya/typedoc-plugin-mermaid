@@ -25,13 +25,7 @@
   },
   "author": "kamiazya <yuki@kamiazya.tech>",
   "license": "MIT",
-  "keywords": [
-    "typedoc",
-    "typedocplugin",
-    "mermaid",
-    "graph",
-    "diagram"
-  ],
+  "keywords": ["typedoc", "typedocplugin", "mermaid", "graph", "diagram"],
   "engines": {
     "node": ">=16.0.0"
   },

@@ -8,7 +8,7 @@
     "lineEnding": "lf",
     "lineWidth": 120,
     "attributePosition": "auto",
-    "ignore": ["**/node_modules", "**/dist", ".all-contributorsrc"]
+    "ignore": ["**/node_modules", "dist", ".all-contributorsrc", "example/docs"]
   },
   "organizeImports": { "enabled": true },
   "linter": {
@@ -32,7 +32,7 @@
         "useNamespaceKeyword": "error"
       }
     },
-    "ignore": ["**/node_modules", "**/dist", ".all-contributorsrc"]
+    "ignore": ["**/node_modules", "dist", ".all-contributorsrc", "example/docs"]
   },
   "javascript": {
     "formatter": {

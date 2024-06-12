@@ -8,6 +8,6 @@ export default defineConfig({
     },
     rollupOptions: {
       external: ['html-escaper', 'typedoc'],
-    }
-  }
+    },
+  },
 });

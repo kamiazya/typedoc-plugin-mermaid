@@ -28,6 +28,7 @@
     "graph",
     "diagram"
   ],
+  "packageManager": "pnpm@9.3.0",
   "scripts": {
     "format": "eslint -c .eslintrc.json --ext ts src --fix && prettier --write './**/*.ts'",
     "lint": "eslint -c .eslintrc.json --ext ts src && prettier --check './**/*.ts'",

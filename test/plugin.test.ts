@@ -6,7 +6,7 @@ describe('MermaidPlugin', () => {
   let plugin: MermaidPlugin;
   beforeAll(async () => {
     const app = await Application.bootstrap();
-    plugin = new MermaidPlugin(app)
+    plugin = new MermaidPlugin(app);
     plugin.initialize();
   });
 

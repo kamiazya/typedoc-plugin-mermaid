@@ -1,5 +1,5 @@
 import * as html from 'html-escaper';
-import { Converter, Context, PageEvent, Application, ReflectionKind, MarkdownEvent, ParameterType } from 'typedoc';
+import { Application, Context, Converter, MarkdownEvent, PageEvent, ParameterType, ReflectionKind } from 'typedoc';
 
 const style = String.raw`
 <style>
@@ -145,7 +145,7 @@ export class MermaidPlugin {
    * Replaces mermaid code blocks in Markdown text with mermaid blocks.
    */
   public handleMermaidCodeBlocks(text: string): string {
-    return text.replace(/^```mermaid[ \t\r]*\n([\s\S]*?)^```[ \t]*$/gm, (m, code) => {
+    return text.replace(/^```mermaid[ \t\r]*\n([\s\S]*?)^```[ \t]*$/gm, (_, code) => {
       return this.toMermaidBlock(code);
     });
   }

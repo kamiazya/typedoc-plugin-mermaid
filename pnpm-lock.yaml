@@ -23,7 +23,7 @@ importers:
         version: 2.27.5
       '@types/html-escaper':
         specifier: ^3.0.0
-        version: 3.0.0
+        version: 3.0.2
       '@types/node':
         specifier: ^20.14.2
         version: 20.14.2
@@ -434,8 +434,8 @@ packages:
   '@types/estree@1.0.5':
     resolution: {integrity: sha512-/kYRxGDLWzHOB7q+wtSUQlFrtcdUccpfy+X+9iMBpHK8QLLhx2wIPYuS5DYtR9Wa/YlZAbIovy7qVdB1Aq6Lyw==}
 
-  '@types/html-escaper@3.0.0':
-    resolution: {integrity: sha512-OcJcvP3Yk8mjYwf/IdXZtTE1tb/u0WF0qa29ER07ZHCYUBZXSN29Z1mBS+/96+kNMGTFUAbSz9X+pHmHpZrTCw==}
+  '@types/html-escaper@3.0.2':
+    resolution: {integrity: sha512-A8vk09eyYzk8J/lFO4OUMKCmRN0rRzfZf4n3Olwapgox/PtTiU8zPYlL1UEkJ/WeHvV6v9Xnj3o/705PKz9r4Q==}
 
   '@types/minimist@1.2.5':
     resolution: {integrity: sha512-hov8bUuiLiyFPGyFPE1lwWhmzYbirOXQNNo40+y3zow8aFVTeyn3VWL0VFFfdNddA8S4Vf0Tc062rzyNr7Paag==}
@@ -2313,7 +2313,7 @@ snapshots:
 
   '@types/estree@1.0.5': {}
 
-  '@types/html-escaper@3.0.0': {}
+  '@types/html-escaper@3.0.2': {}
 
   '@types/minimist@1.2.5': {}
 

@@ -35,7 +35,7 @@ runs:
     run: |
       pnpm exec changeset version --snapshot ${{ inputs.name }}
       {
-        echo 'publish_result<<EOF' >>
+        echo 'publish_result<<EOF'
         pnpm exec changeset publish --no-git-tag --snapshot ${{ inputs.name }} --tag ${{ inputs.tag }}
         echo EOF
       } >> $GITHUB_OUTPUT

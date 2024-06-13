@@ -1,0 +1,38 @@
+name: Snapshot Release Action
+description: Composite Release Action
+inputs:
+  name:
+    description: Snapshot name (e.g. next, pr100, etc.)
+    required: true
+  tag:
+    description: Tag name (e.g. next, dev, etc.)
+    required: true
+
+outputs:
+  publish_result:
+    description: Publish result
+    value: ${{ steps.snapshot-release.outputs.publish_result }}
+
+runs:
+  using: composite
+  steps:
+  - name: Creating .npmrc
+    run: |
+      cat << EOF > "$HOME/.npmrc"
+        //registry.npmjs.org/:_authToken=$NPM_TOKEN
+      EOF
+    env:
+      NPM_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+    shell: bash
+  - name: "Snapshot Release @${{ inputs.tag }}"
+    id: snapshot-release
+    run: |
+      pnpm exec changeset version --snapshot ${{ inputs.name }}
+      {
+        echo 'publish_result<<EOF' >>
+        pnpm exec changeset publish --no-git-tag --snapshot ${{ inputs.name }} --tag ${{ inputs.tag }}
+        echo EOF
+      } >> $GITHUB_OUTPUT
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    shell: bash

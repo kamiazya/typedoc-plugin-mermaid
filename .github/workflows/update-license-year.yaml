@@ -8,7 +8,7 @@ jobs:
   update-license-year:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+      - uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       - uses: FantasticFiasco/action-update-license-year@9135da8f9ccc675217e02357c744b6b541d45cb0 # 3.0.2
         with:
           token: ${{ secrets.GITHUB_TOKEN }}

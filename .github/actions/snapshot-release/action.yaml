@@ -42,3 +42,8 @@ runs:
     env:
       GITHUB_TOKEN: ${{ inputs.github-token }}
     shell: bash
+
+  - name: Generate artifact attestation
+    uses: actions/attest-build-provenance@49df96e17e918a15956db358890b08e61c704919 # v1.2.0
+    with:
+      subject-path: ${{ github.workspace }}/dist

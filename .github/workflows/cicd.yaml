@@ -113,6 +113,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+      - name: Generate artifact attestation
+        if: ${{ steps.changesets.outputs.published == 'true' }}
+        uses: actions/attest-build-provenance@49df96e17e918a15956db358890b08e61c704919 # v1.2.0
+        with:
+          subject-path: ${{ github.workspace }}/dist
     outputs:
       published: ${{ steps.changesets.outputs.published }}
 

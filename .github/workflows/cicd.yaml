@@ -115,3 +115,28 @@ jobs:
           NPM_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
     outputs:
       published: ${{ steps.changesets.outputs.published }}
+
+  prerelease:
+    name: Prerelease
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    needs: release
+    # if repository is github.com/kamiazya/typedoc-plugin-mermaid
+    # and branch is main
+    # and release job dosen't publish package to npm
+    # then run this job
+    if: ${{ github.repository == 'kamiazya/typedoc-plugin-mermaid' && github.ref == 'refs/heads/main' && github.event_name == 'push' && needs.release.outputs.published == 'false' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+      - name: Setup
+        uses: ./.github/actions/setup
+      - name: Snapshot Release @next
+        uses: ./.github/actions/snapshot-release
+        with:
+          tag: next
+          name: next
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          npm-token: ${{ secrets.NODE_AUTH_TOKEN }}

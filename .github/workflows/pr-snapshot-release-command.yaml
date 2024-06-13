@@ -123,8 +123,8 @@ jobs:
         with:
           comment-id: ${{ github.event.comment.id }}
           body: |
-            **Edited**:
-            Snapshot release @develop: ${{ steps.snapshot-release.outputs.publish_result && '✅' || '❌'}}
+            **Edited by GitHub Action[bot]**:
+
             ```
             ${{ steps.snapshot-release.outputs.publish_result }}
             ```

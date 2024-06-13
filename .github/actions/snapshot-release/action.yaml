@@ -7,6 +7,12 @@ inputs:
   tag:
     description: Tag name (e.g. next, dev, etc.)
     required: true
+  github-token:
+    description: GitHub token
+    required: true
+  npm-token:
+    description: NPM token
+    required: true
 
 outputs:
   publish_result:
@@ -22,7 +28,7 @@ runs:
         //registry.npmjs.org/:_authToken=$NPM_TOKEN
       EOF
     env:
-      NPM_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+      NPM_TOKEN: ${{ inputs.npm-token }}
     shell: bash
   - name: "Snapshot Release @${{ inputs.tag }}"
     id: snapshot-release
@@ -34,5 +40,5 @@ runs:
         echo EOF
       } >> $GITHUB_OUTPUT
     env:
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GITHUB_TOKEN: ${{ inputs.github-token }}
     shell: bash

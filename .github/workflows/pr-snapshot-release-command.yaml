@@ -103,7 +103,8 @@ jobs:
           if [[ $(git branch --show-current) == 'changeset-release/main' ]]; then
             git checkout origin/main -- .changeset
           fi
-      - uses: ./.github/actions/setup
+      - name: Setup without checkout
+        uses: ./.github/actions/setup
         with:
           skip-checkout: 'true'
       - uses: actions/download-artifact@65a9edc5881444af0b9093a5e628f2fe47ea3b2e # v4.1.7
@@ -114,6 +115,8 @@ jobs:
         with:
           name: pr${{ github.event.issue.number }}
           tag: develop
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          npm-token: ${{ secrets.NODE_AUTH_TOKEN }}
 
       - name: Add reaction
         uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4.0.0

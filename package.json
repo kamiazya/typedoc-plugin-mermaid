@@ -1,6 +1,6 @@
 {
   "name": "typedoc-plugin-mermaid",
-  "version": "1.10.0",
+  "version": "1.11.0",
   "description": "A plugin for TypeDoc that generates graphs for mermaid.js diagrams by using @mermaid annotation.",
   "main": "./dist/typedoc-plugin-mermaid.js",
   "module": "./dist/typedoc-plugin-mermaid.mjs",
@@ -25,11 +25,19 @@
   },
   "author": "kamiazya <yuki@kamiazya.tech>",
   "license": "MIT",
-  "keywords": ["typedoc", "typedocplugin", "mermaid", "graph", "diagram"],
+  "keywords": [
+    "typedoc",
+    "typedocplugin",
+    "mermaid",
+    "graph",
+    "diagram"
+  ],
   "engines": {
     "node": ">=16.0.0"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "publishConfig": {
     "provenance": true
   },

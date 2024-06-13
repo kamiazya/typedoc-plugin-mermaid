@@ -1,5 +1,11 @@
 # typedoc-plugin-mermaid
 
+## 1.11.1
+
+### Patch Changes
+
+- [#859](https://github.com/kamiazya/typedoc-plugin-mermaid/pull/859) [`2683809`](https://github.com/kamiazya/typedoc-plugin-mermaid/commit/26838095b3732860dfdf594c6f77583b19a04090) Thanks [@kamiazya](https://github.com/kamiazya)! - Fix to download before publish
+
 ## 1.11.0
 
 ### Minor Changes

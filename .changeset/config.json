@@ -12,5 +12,9 @@
   "access": "public",
   "baseBranch": "main",
   "updateInternalDependencies": "patch",
+  "snapshot": {
+    "prereleaseTemplate": "{tag}-{commit}",
+    "useCalculatedVersion": true
+  },
   "ignore": ["example"]
 }

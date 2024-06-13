@@ -1,13 +1,15 @@
 [![GitHub Action](https://github.com/kamiazya/typedoc-plugin-mermaid/workflows/Node%20CI/badge.svg)](https://github.com/kamiazya/typedoc-plugin-mermaid/actions?workflow=Node+CI)
 [![CodeFactor](https://www.codefactor.io/repository/github/kamiazya/typedoc-plugin-mermaid/badge)](https://www.codefactor.io/repository/github/kamiazya/typedoc-plugin-mermaid)
 [![npm version](https://badge.fury.io/js/typedoc-plugin-mermaid.svg)](https://badge.fury.io/js/typedoc-plugin-mermaid)
+![node version](https://img.shields.io/node/v/typedoc-plugin-mermaid)
+![npm](https://img.shields.io/npm/dm/typedoc-plugin-mermaid)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fkamiazya%2Ftypedoc-plugin-mermaid.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fkamiazya%2Ftypedoc-plugin-mermaid?ref=badge_shield)
-[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-11-orange.svg?style=flat-square)](#contributors-)
-<!-- ALL-CONTRIBUTORS-BADGE:END -->
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
+[![All Contributors](https://img.shields.io/github/all-contributors/kamiazya/typedoc-plugin-mermaid?color=ee8449)](#contributors)
+[![format: Biome](https://img.shields.io/badge/format%20with-Biome-F7B911?logo=biome&style=flat)](https://biomejs.dev/)
+[![test: Vitest](https://img.shields.io/badge/tested%20with-Vitest-6E9F18?logo=vitest&style=flat)](https://vitest.dev/)
+[![build: Vite](https://img.shields.io/badge/build%20with-Vite-646CFF?logo=vite&style=flat)](https://rollupjs.org/)
 
 # typedoc-plugin-mermaid
 
@@ -24,6 +26,14 @@ The plugin can then be installed using [npm](https://www.npmjs.com/):
 npm install --save-dev typedoc-plugin-mermaid
 # or yarn
 yarn add -D typedoc-plugin-mermaid
+```
+
+Add this plugin in your `typedoc.json`:
+
+```json
+{
+  "plugin": ["typedoc-plugin-mermaid"]
+}
 ```
 
 ## Usage
@@ -57,7 +67,7 @@ export class Mermaid { }
 
 [↓↓ DEMO ↓↓](https://kamiazya.github.io/typedoc-plugin-samples/classes/hoge.html)
 
-[![Example](./media/example.png)](https://kamiazya.github.io/typedoc-plugin-samples/classes/hoge.html)
+[![Example](https://github.com/kamiazya/typedoc-plugin-mermaid/raw/main/media/example.png)](https://kamiazya.github.io/typedoc-plugin-samples/classes/hoge.html)
 
 ### Arguments
 

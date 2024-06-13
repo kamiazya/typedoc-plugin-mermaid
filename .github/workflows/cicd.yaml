@@ -17,7 +17,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       - name: Setup
         uses: ./.github/actions/setup
       - name: Check format
@@ -32,7 +32,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       - name: Setup
         uses: ./.github/actions/setup
       - name: Check type
@@ -50,7 +50,7 @@ jobs:
       - check_type
     steps:
       - name: Checkout
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       - name: Setup
         uses: ./.github/actions/setup
       - name: Build
@@ -74,7 +74,7 @@ jobs:
       contents: read
     steps:
       - name: Checkout
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       - name: Setup
         uses: ./.github/actions/setup
       - name: Test
@@ -100,7 +100,7 @@ jobs:
       # Other permissions are defaulted to none
     steps:
       - name: Checkout
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       - name: Setup
         uses: ./.github/actions/setup
       - name: Create Release Pull Request or Publish to npm
@@ -130,7 +130,7 @@ jobs:
     if: ${{ github.repository == 'kamiazya/typedoc-plugin-mermaid' && github.ref == 'refs/heads/main' && github.event_name == 'push' && needs.release.outputs.published == 'false' }}
     steps:
       - name: Checkout
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4.1.6
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       - name: Setup
         uses: ./.github/actions/setup
       - name: Snapshot Release @next

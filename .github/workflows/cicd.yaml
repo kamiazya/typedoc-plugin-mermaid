@@ -134,6 +134,7 @@ jobs:
         uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4.1.7
       - name: Setup
         uses: ./.github/actions/setup
+      - uses: actions/download-artifact@65a9edc5881444af0b9093a5e628f2fe47ea3b2e # v4.1.7
       - name: Snapshot Release @next
         uses: ./.github/actions/snapshot-release
         with:

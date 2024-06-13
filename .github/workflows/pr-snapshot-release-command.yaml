@@ -122,4 +122,9 @@ jobs:
         uses: peter-evans/create-or-update-comment@71345be0265236311c031f5c7866368bd1eff043 # v4.0.0
         with:
           comment-id: ${{ github.event.comment.id }}
-          reactions: ${{ steps.snapshot-release.outputs.succeeded == 'true' && 'rocket' || 'confused'}}
+          body: |
+            **Edited**:
+            Snapshot release @develop: ${{ steps.snapshot-release.outputs.publish_result && '✅' || '❌'}}
+            ```
+            ${{ steps.snapshot-release.outputs.publish_result }}
+            ```

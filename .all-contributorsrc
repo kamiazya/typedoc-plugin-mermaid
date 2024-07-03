@@ -122,6 +122,15 @@
       "contributions": [
         "a11y"
       ]
+    },
+    {
+      "login": "ludovicm67",
+      "name": "Ludovic Muller",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9420561?v=4",
+      "profile": "https://ludovic-muller.fr",
+      "contributions": [
+        "a11y"
+      ]
     }
   ],
   "contributorsPerLine": 7,

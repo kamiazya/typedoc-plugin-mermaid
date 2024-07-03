@@ -111,6 +111,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
       <td align="center" valign="top" width="14.28%"><a href="https://www.manufacanalytics.com/"><img src="https://avatars.githubusercontent.com/u/25290212?v=4?s=100" width="100px;" alt="Maneet Goyal"/><br /><sub><b>Maneet Goyal</b></sub></a><br /><a href="#ideas-maneetgoyal" title="Ideas, Planning, & Feedback">🤔</a></td>
       <td align="center" valign="top" width="14.28%"><a href="http://www.hka.de"><img src="https://avatars.githubusercontent.com/u/734334?v=4?s=100" width="100px;" alt="Juergen Zimmermann"/><br /><sub><b>Juergen Zimmermann</b></sub></a><br /><a href="https://github.com/kamiazya/typedoc-plugin-mermaid/issues?q=author%3Ajuergenzimmermann" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/michal-kindl"><img src="https://avatars.githubusercontent.com/u/20546439?v=4?s=100" width="100px;" alt="Michal Kindl"/><br /><sub><b>Michal Kindl</b></sub></a><br /><a href="#a11y-michal-kindl" title="Accessibility">️️️️♿️</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://ludovic-muller.fr"><img src="https://avatars.githubusercontent.com/u/9420561?v=4?s=100" width="100px;" alt="Ludovic Muller"/><br /><sub><b>Ludovic Muller</b></sub></a><br /><a href="#a11y-ludovicm67" title="Accessibility">️️️️♿️</a></td>
     </tr>
   </tbody>
 </table>

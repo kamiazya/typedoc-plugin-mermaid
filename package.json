@@ -9,7 +9,8 @@
       "import": "./dist/typedoc-plugin-mermaid.mjs",
       "require": "./dist/typedoc-plugin-mermaid.js"
     },
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    "./tsdoc.json": "./tsdoc.json"
   },
   "repository": {
     "type": "git",
@@ -36,7 +37,8 @@
     "node": ">=16.0.0"
   },
   "files": [
-    "dist"
+    "dist",
+    "tsdoc.json"
   ],
   "publishConfig": {
     "provenance": true
@@ -53,7 +55,7 @@
     "html-escaper": "^3.0.3"
   },
   "peerDependencies": {
-    "typedoc": ">=0.23.0 || 0.24.x || 0.25.x"
+    "typedoc": ">=0.23.0 || 0.24.x || 0.25.x || 0.26.x"
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.1",
@@ -61,7 +63,7 @@
     "@changesets/cli": "^2.27.5",
     "@types/html-escaper": "^3.0.0",
     "@types/node": "^20.14.2",
-    "typedoc": "^0.25.13",
+    "typedoc": "^0.26.3",
     "typescript": "^5.4.5",
     "vite": "^5.2.13",
     "vitest": "^1.6.0"

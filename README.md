@@ -36,6 +36,18 @@ Add this plugin in your `typedoc.json`:
 }
 ```
 
+If you use the `@mermaid` tag in your tsdoc comments,
+add `typedoc-plugin-mermaid/tsdoc.json` to the extends of tsdoc.json:
+
+```json
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/tsdoc/v0/tsdoc.schema.json",
+  "extends": [
+    "typedoc-plugin-mermaid/tsdoc.json"
+  ]
+}
+```
+
 ## Usage
 
 Write tsdoc with `@mermaid` annotations:

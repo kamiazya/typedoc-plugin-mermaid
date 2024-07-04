@@ -93,10 +93,8 @@ export class MermaidPlugin {
       this.onConverterResolveBegin(context);
     });
 
-    this.app.renderer.on({
-      [PageEvent.END]: (event: PageEvent) => {
-        this.onEndPage(event);
-      },
+    this.app.renderer.on(PageEvent.END, (event: PageEvent) => {
+      this.onEndPage(event);
     });
 
     // high priority markdown parser to catch blocks before the built-in parser
@@ -105,7 +103,6 @@ export class MermaidPlugin {
       (event: MarkdownEvent) => {
         this.onParseMarkdown(event);
       },
-      this,
       1000,
     );
   }

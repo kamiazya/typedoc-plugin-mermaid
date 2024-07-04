@@ -7,6 +7,7 @@
   },
   "devDependencies": {
     "typedoc": "^0.26.3",
-    "typedoc-plugin-mermaid": "workspace:*"
+    "typedoc-plugin-mermaid": "workspace:*",
+    "typescript": "*"
   }
 }

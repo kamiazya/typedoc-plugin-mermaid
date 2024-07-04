@@ -61,8 +61,8 @@ jobs:
         with:
           name: dist
           path: dist
-  test:
-    name: Test on node ${{ matrix.node-version }}
+  unit_test:
+    name: Unit Test on node ${{ matrix.node-version }}
     needs:
       - check_format
       - check_type
@@ -83,7 +83,7 @@ jobs:
           CI: true
 
   integration_test:
-    name: Integration Test
+    name: Integration Test on TypeDoc ${{ matrix.typedoc-version }}
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -114,12 +114,13 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - build
-      - test
+      - unit_test
+      - integration_test
     # if repository is github.com/kamiazya/typedoc-plugin-mermaid
     # and branch is main
     # and before job is successful
     # then run this job
-    if: ${{ github.repository == 'kamiazya/typedoc-plugin-mermaid' && github.ref == 'refs/heads/main' && github.event_name == 'push' && needs.build.result == 'success' && needs.test.result == 'success' }}
+    if: ${{ github.repository == 'kamiazya/typedoc-plugin-mermaid' && github.ref == 'refs/heads/main' && github.event_name == 'push' && success() }}
     permissions:
       contents: write # Used to commit to "Version Packages" PR
       pull-requests: write # Used to create "Version Packages" PR

@@ -1,6 +1,6 @@
 {
   "name": "typedoc-plugin-mermaid",
-  "version": "1.11.1",
+  "version": "1.12.0",
   "description": "A plugin for TypeDoc that generates graphs for mermaid.js diagrams by using @mermaid annotation.",
   "main": "./dist/typedoc-plugin-mermaid.js",
   "module": "./dist/typedoc-plugin-mermaid.mjs",

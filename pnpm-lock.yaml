@@ -29,10 +29,10 @@ importers:
         version: 20.14.9
       typedoc:
         specifier: ^0.26.3
-        version: 0.26.3(typescript@5.4.5)
+        version: 0.26.3(typescript@5.5.4)
       typescript:
         specifier: ^5.4.5
-        version: 5.4.5
+        version: 5.5.4
       vite:
         specifier: ^5.2.13
         version: 5.3.3(@types/node@20.14.9)
@@ -1229,6 +1229,11 @@ packages:
 
   typescript@5.4.5:
     resolution: {integrity: sha512-vcI4UpRgg81oIRUFwR0WSIHKt11nJ7SAVlYNIu+QpqeyXP+gpQJy/Z4+F0aGxSE4MqwjyXvW/TzgkLAx2AGHwQ==}
+    engines: {node: '>=14.17'}
+    hasBin: true
+
+  typescript@5.5.4:
+    resolution: {integrity: sha512-Mtq29sKDAEYP7aljRgtPOpTvOfbwRWlS6dPRzwjdE+C0R4brX/GUyhHSecbHMFLNBLcJIPt9nl9yG5TZ1weH+Q==}
     engines: {node: '>=14.17'}
     hasBin: true
 
@@ -2604,7 +2609,18 @@ snapshots:
       typescript: 5.4.5
       yaml: 2.4.5
 
+  typedoc@0.26.3(typescript@5.5.4):
+    dependencies:
+      lunr: 2.3.9
+      markdown-it: 14.1.0
+      minimatch: 9.0.5
+      shiki: 1.10.1
+      typescript: 5.5.4
+      yaml: 2.4.5
+
   typescript@5.4.5: {}
+
+  typescript@5.5.4: {}
 
   uc.micro@2.1.0: {}
 

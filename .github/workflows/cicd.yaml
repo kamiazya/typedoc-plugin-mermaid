@@ -134,7 +134,7 @@ jobs:
       - uses: actions/download-artifact@65a9edc5881444af0b9093a5e628f2fe47ea3b2e # v4.1.7
       - name: Create Release Pull Request or Publish to npm
         id: changesets
-        uses: changesets/action@aba318e9165b45b7948c60273e0b72fce0a64eb9 # v1.4.7
+        uses: changesets/action@3de3850952bec538fde60aac71731376e57b9b57 # v1.4.8
         with:
           publish: pnpm exec changeset publish
           version: pnpm exec changeset version
